@@ -1,0 +1,9 @@
+<li class="nav-item">
+  <%= link_to "Account", edit_user_registration_path, :class => "nav-link" %>
+</li>
+<% if current_user.admin? %>
+  <%= link_to "Admin", admin_users_path, :class => "nav-link" %>
+<% end %>
+<li class="nav-item">
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "nav-link" %>
+</li>

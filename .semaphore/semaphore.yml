@@ -1,0 +1,19 @@
+version: "v1.0"
+name: First pipeline example
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Unit Tests"
+    task:
+      jobs:
+        - name: RSpec
+          commands:
+            - sudo systemctl start postgresql
+            - checkout
+            - bundle install --deployment --path vendor/bundle
+            - bundle exec rake db:setup
+            - bundle exec rake db:test:prepare
+            - bundle exec rake spec
