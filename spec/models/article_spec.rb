@@ -23,4 +23,13 @@ RSpec.describe Article, type: :model do
       expect(article.errors[:content]).to be_present
     end
   end
+  
+  describe ".recent" do
+    it "returns last 10 articles" do
+      old_article = FactoryBot.create(:article)
+      recent_articles = FactoryBot.create_list(:article, 10)
+      
+      expect(Article.recent).to eq(recent_articles.reverse)
+    end
+  end
 end
