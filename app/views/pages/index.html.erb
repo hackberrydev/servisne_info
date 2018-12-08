@@ -1,1 +1,7 @@
 <h1>Hackberry Rails Starter App</h1>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li><%= link_to article.title, article.url %></li>
+  <% end %>
+</ul>
