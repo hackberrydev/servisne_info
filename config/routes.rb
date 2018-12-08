@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, 
+             :controllers => { 
+               :confimations => "users/confirmations",
+               :passwords => "users/passwords",
+               :registrations => "users/registrations",
+               :sessions => "users/sessions",
+               :unlocks => "users/unlocks"
+             }
 
   root "pages#index"
 
