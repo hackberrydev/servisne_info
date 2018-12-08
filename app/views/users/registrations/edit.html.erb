@@ -15,6 +15,11 @@
           Currently waiting confirmation for: <%= resource.unconfirmed_email %>
         </small>
       <% end %>
+    
+      <div class="form-group">
+        <%= f.label :streets %>
+        <%= f.text_field :streets, :class => "form-control" %>
+      </div>
 
       <div class="form-group">
         <%= f.label :password %>
@@ -42,7 +47,7 @@
         </small>
       </div>
 
-      <%= f.submit "Update", :class => "btn btn-primary" %>
+      <%= f.submit "Save", :class => "btn btn-primary" %>
     <% end %>
 
     <p class="mt-5">
