@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :article do
-    url "MyString"
+    sequence(:url) { |n| "example.com/article-#{n}" }
     title "MyString"
     content "MyText"
   end

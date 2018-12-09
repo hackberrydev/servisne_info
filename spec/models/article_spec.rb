@@ -22,6 +22,15 @@ RSpec.describe Article, type: :model do
       expect(article.valid?).to be_falsy
       expect(article.errors[:content]).to be_present
     end
+    
+    it "must have unique url" do
+      FactoryBot.create(:article, :url => "example.com/article1")
+      
+      article = FactoryBot.build(:article, :url => "example.com/article1")
+      
+      expect(article.valid?).to be_falsy
+      expect(article.errors[:url]).to be_present
+    end
   end
   
   describe ".recent" do

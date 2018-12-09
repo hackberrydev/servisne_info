@@ -9,5 +9,14 @@ RSpec.describe ArticleFactory do
       
       expect(Article.count).to eq(1)
     end
+    
+    it "doesn't save an article twice" do
+      article1 = FactoryBot.build(:article, :url => "example.com/article1")
+      article2 = FactoryBot.build(:article, :url => "example.com/article1")
+      
+      ArticleFactory.create([article1, article2])
+      
+      expect(Article.count).to eq(1)
+    end
   end
 end
