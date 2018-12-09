@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Site021 do
+RSpec.describe Site021, :vcr do
   it "scrapes articles from 021.rs" do
     scraper = Site021.new
 
