@@ -1,11 +1,15 @@
 require "rails_helper"
 
 RSpec.describe ArticleFactory do
-  describe ".create" do
+  describe "#create" do
+    before do
+      @factory = ArticleFactory.new(ActiveSupport::Logger.new("/dev/null"))
+    end 
+    
     it "saves articles to database" do
       article = FactoryBot.build(:article)
       
-      ArticleFactory.create([article])
+      @factory.create([article])
       
       expect(Article.count).to eq(1)
     end
@@ -14,7 +18,7 @@ RSpec.describe ArticleFactory do
       article1 = FactoryBot.build(:article, :url => "example.com/article1")
       article2 = FactoryBot.build(:article, :url => "example.com/article1")
       
-      ArticleFactory.create([article1, article2])
+      @factory.create([article1, article2])
       
       expect(Article.count).to eq(1)
     end

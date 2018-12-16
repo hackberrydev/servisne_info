@@ -5,6 +5,7 @@ namespace :app do
     scraper = Site021.new(logger)
     articles = scraper.scrape
     
-    ArticleFactory.create(articles)
+    factory = ArticleFactory.new(logger)
+    factory.create(articles)
   end
 end
