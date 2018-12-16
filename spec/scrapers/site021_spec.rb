@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Site021, :vcr do
   it "scrapes articles from 021.rs" do
-    scraper = Site021.new
+    scraper = Site021.new(ActiveSupport::Logger.new("/dev/null"))
 
     articles = scraper.scrape
 

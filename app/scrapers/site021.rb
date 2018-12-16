@@ -1,5 +1,10 @@
 class Site021
+  def initialize(logger)
+    @logger = logger
+  end
+  
   def scrape
+    @logger.info "Scrape site - 021.rs"
     page = mechanize.get("https://www.021.rs/Novi-Sad/Servisne-informacije/6")
     page.search(".col-md-8 .storyCatList .article_wrapper").map do |article_html|
       build_article(article_html)
@@ -18,6 +23,8 @@ class Site021
     intro = page.at(".intro").text.strip
     body = page.at(".bodyText > div").text.strip
     article.content = intro + body
+    
+    @logger.info "Scrape article - #{article.url}"
     
     article
   end

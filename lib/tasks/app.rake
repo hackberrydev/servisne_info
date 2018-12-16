@@ -1,7 +1,9 @@
 namespace :app do
   desc "Scrape new articles"
   task :scrape_articles => :environment do
-    articles = Site021.new.scrape
+    logger = ActiveSupport::Logger.new(STDOUT)
+    scraper = Site021.new(logger)
+    articles = scraper.scrape
     
     ArticleFactory.create(articles)
   end
