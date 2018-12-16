@@ -12,6 +12,7 @@ gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "kaminari"
 gem "lograge"
+gem "mechanize"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "sass-rails", "~> 5.0"
@@ -36,4 +37,6 @@ end
 
 group :test do
   gem "capybara"
+  gem "webmock"
+  gem "vcr", "~> 4.0"
 end
