@@ -16,7 +16,7 @@ class Site021
     
     page = mechanize.get(article.url)
     intro = page.at(".intro").text.strip
-    body = page.at(".bodyText").text.strip
+    body = page.at(".bodyText > div").text.strip
     article.content = intro + body
     
     article
