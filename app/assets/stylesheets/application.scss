@@ -1,9 +1,159 @@
 @import "bootstrap";
+@import url('http://code.cdn.mozilla.net/fonts/fira.css');
 
-.pagination-container {
-  text-align: center !important;
+html {
+  padding: 0;
+}
 
-  nav {
-    display: inline-block;
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+body {
+  background: image-url('background.jpg') no-repeat #ececec;
+  background-size: cover;
+  padding: 0;
+  font-family: 'Fira Sans', sans-serif;
+  color: #878787;
+}
+
+.top-30 {
+  margin-top: 30px;
+}
+
+.content {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.main-content {
+  background-color: rgba(248, 248, 248, 1);
+  padding: 0 22px 22px 22px;
+}
+
+.main-content form {
+  margin: 30px 0;
+}
+
+.main-navigation {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  border-width: 0 0 1px;
+}
+
+.main-navigation .navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.avatar {
+  background: image-url('about.png') no-repeat;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+}
+
+.tanja {
+  background-position: 0 -630px;
+  border-radius: 10px 100px 100px 100px; 
+}
+
+.tanja:hover {
+  background-position: 0 -420px;
+}
+
+.tanja.hover {
+  background-position: 0 -420px;
+}
+
+.nebojsa {
+  background-position: 0 -210px;
+  border-radius: 100px 10px 100px 100px; 
+}
+
+.nebojsa:hover {
+  background-position: 0 0;
+}
+
+.nebojsa.hover {
+  background-position: 0 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #AD235E;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top: 0;
+}
+
+h3.autori {
+  padding-top: 2em;
+}
+
+.btn-primary {
+  background-color: #098490;
+  color: #ECECEC;
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: #0b96a3;
+}
+
+.latest-info {
+  padding-bottom: 20px;
+}
+
+.latest-info ul {
+  list-style: none;
+  padding-left: 1em;
+}
+
+.latest-info li a {
+  color: #878787;
+}
+
+.steps {
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+
+.step {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  display: table;
+  margin: 0 auto;
+  color: #ad235e;
+}
+
+.step-active {
+  background-color: #ad235e;
+}
+
+.step-circle {
+  border: 2px solid #ad235e;
+  border-radius: 50px;
+  color: #b1b1b1;
+}
+
+.step span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2.5em;
+}
+
+@media(max-width: 768px) {
+  body {
+    background: none #ececec;
   }
 }
