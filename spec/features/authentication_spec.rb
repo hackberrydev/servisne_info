@@ -5,16 +5,16 @@ feature "Authentication" do
 
   scenario "A visitor creates an account" do
     sign_up("john@example.com", "pass123", "Baker street")
-    expect(page).to have_content("You have signed up successfully.")
+    expect(page).to have_content("Uspešno ste se prijаvili.")
   end
 
   scenario "A visitor signs in and out" do
     user = FactoryBot.create(:user)
 
     sign_in(user.email, "pass123")
-    expect(page).to have_content("Signed in successfully.")
+    expect(page).to have_content("Uspešno ste se prijаvili.")
 
     sign_out
-    expect(page).to have_content("Signed out successfully.")
+    expect(page).to have_content("Uspešno ste se odjavili.")
   end
 end
