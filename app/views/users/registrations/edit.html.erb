@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
-    <h3>Edit <%= resource_name.to_s.humanize %></h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
@@ -25,11 +24,11 @@
         <%= f.label :password %>
         <%= f.password_field :password, :autocomplete => "off", :class => "form-control" %>
         <small class="form-text text-muted">
-          Leave blank if you don't want to change it.
+          Ostavite prazno ako ne želite da promenite lozinku
         </small>
         <% if @minimum_password_length %>
           <small class="form-text text-muted">
-            <%= @minimum_password_length %> characters minimum.
+            Minimalno <%= @minimum_password_length %> karaktera.
           </small>
         <% end %>
       </div>
@@ -43,17 +42,17 @@
         <%= f.label :current_password %>
         <%= f.password_field :current_password, :autocomplete => "off", :class => "form-control" %>
         <small class="form-text text-muted">
-          We need your current password to confirm your changes.
+          Upišite lozinku da potvrdite promene.
         </small>
       </div>
 
-      <%= f.submit "Save", :class => "btn btn-primary" %>
+      <%= f.submit t("save"), :class => "btn btn-primary" %>
     <% end %>
 
     <p class="mt-5">
-      Unhappy?
+      Niste zadovoljni?
       <%= button_to(
-        "Cancel my account",
+        t("cancel_account"),
         registration_path(resource_name),
         :data => { :confirm => "Are you sure?" },
         :method => :delete,
@@ -61,6 +60,6 @@
       ) %>
     </p>
 
-    <%= link_to "Back", :back %>
+    <%= link_to t("back"), :back %>
   </div>
 </div>

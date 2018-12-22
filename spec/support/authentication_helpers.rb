@@ -1,23 +1,23 @@
 module AuthenticationHelpers
   def sign_up(email, password, streets)
     visit root_path
-    find("nav").click_link("Sign up")
+    find("nav").click_link("Registruj se")
     fill_in "Email", :with => email
-    fill_in "Password", :with => password
-    fill_in "Password confirmation", :with => password
-    fill_in "Streets", :with => streets
-    click_button "Sign up"
+    fill_in "Lozinka", :with => password
+    fill_in "Potvrda lozinke", :with => password
+    fill_in "Ulice", :with => streets
+    click_button "Registruj se"
   end
 
   def sign_in(email, password = "pass123")
     visit root_path
-    find("nav").click_link("Sign in")
+    find("nav").click_link("Prijavi se")
     fill_in "Email", :with => email
-    fill_in "Password", :with => password
-    click_button "Sign in"
+    fill_in "Lozinka", :with => password
+    click_button "Prijavi se"
   end
 
   def sign_out
-    click_link "Sign out"
+    click_link "Odjavi se"
   end
 end

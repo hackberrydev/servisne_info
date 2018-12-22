@@ -1,0 +1,28 @@
+rs:
+  sign_in: "Prijavi se"
+  sign_out: "Odjavi se"
+  sign_up: "Registruj se"
+  account: "Nalog"
+  save: "Sačuvaj"
+  remember_me: "Zapamti me"
+  forgot_password_instruction: "Pošalji mi instrukcije za reset lozinke"
+  forgot_password: "Zaboravili ste lozinku?"
+  recent_articles: "Najnovije vesti"
+  cancel_account: "Obrišite nalog"
+  back: "Nazad"
+  
+  errors:
+    messages: 
+      not_saved: "Molimo Vas ispravite greške"
+  
+  activerecord:
+    attributes:
+      user: 
+        streets: "Ulice"
+        password: "Lozinka"
+        password_confirmation: "Potvrda lozinke"
+        current_password: "Trenutna lozinka"
+    errors:
+      messages:
+        blank: "je obavezno polje"
+        confirmation: "se ne poklapa"

@@ -9,12 +9,12 @@ feature "Update account" do
     sign_in(user.email, "pass123")
     visit edit_user_registration_path
     fill_in "Email", :with => "my_new@example.com"
-    fill_in "Streets", :with => "My new street"
-    fill_in "Current password", :with => "pass123"
-    click_button "Save"
+    fill_in "Ulice", :with => "My new street"
+    fill_in "Trenutna lozinka", :with => "pass123"
+    click_button "Sačuvaj"
     
-    expect(page).to have_content("Your account has been updated successfully.")
+    expect(page).to have_content("Uspešno ste аžurirаli svoj nаlog.")
     expect(page).to have_field("Email", :with => "my_new@example.com")
-    expect(page).to have_field("Streets", :with => "My new street")
+    expect(page).to have_field("Ulice", :with => "My new street")
   end
 end
