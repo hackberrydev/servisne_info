@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>RailsStarter</title>
+    <title>Servisne Info</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -14,12 +14,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render "layouts/navigation" %>
+    <div class="content">
+      <%= render "layouts/navigation" %>
 
-    <div class="container">
-      <%= render "layouts/flash" %>
-
-      <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 main-content">
+            <%= render "layouts/flash" %>
+            
+            <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

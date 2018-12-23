@@ -1,7 +1,18 @@
-<h1><%= t("recent_articles") %></h1>
+<h2>Budite spremni za nestanak struje, vode ili grejanja</h2>
+<p>servisne.info vam šalju korisne servisne informacije na mejl za ulice koje odaberete.</p>
+<p></p>
 
-<ul>
-  <% @articles.each do |article| %>
-    <li><%= link_to article.title, article.url %></li>
-  <% end %>
-</ul>
+<div class="latest-info top-30">
+  <h3><%= t("recent_articles") %></h3>
+
+  <table class="table-list">
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= link_to article.title, article.url %></td>
+          <td><%= article.created_at.strftime("%d.%m.%Y.") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
