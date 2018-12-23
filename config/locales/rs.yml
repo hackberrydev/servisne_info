@@ -4,6 +4,8 @@ rs:
   sign_up: "Registruj se"
   account: "Nalog"
   save: "Sačuvaj"
+  about: "O servisu"
+  contact: "Kontakt"
   remember_me: "Zapamti me"
   forgot_password_instruction: "Pošalji mi instrukcije za reset lozinke"
   forgot_password: "Zaboravili ste lozinku?"
