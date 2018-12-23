@@ -10,12 +10,8 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <%= link_to t("about"), about_path, :class => "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to t("contact"), contact_path, :class => "nav-link" %>
-              </li>
+              <%= nav_link(t("about"), about_path) %>
+              <%= nav_link(t("contact"), contact_path) %>
               <% if signed_in? %>
                 <% if admin_page? %>
                   <%= render "layouts/admin_navigation" %>
@@ -23,12 +19,8 @@
                   <%= render "layouts/user_navigation" %>
                 <% end %>
               <% else %>
-                <li class="nav-item">
-                  <%= link_to t("sign_up"), new_user_registration_path, :class => "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to t("sign_in"), new_user_session_path, :class => "nav-link" %>
-                </li>
+                <%= nav_link(t("sign_up"), new_user_registration_path) %>
+                <%= nav_link(t("sign_in"), new_user_session_path) %>
               <% end %>
             </ul>
           </div>
