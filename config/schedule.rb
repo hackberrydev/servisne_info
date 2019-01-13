@@ -19,6 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
+env :PATH, ENV["PATH"]
+set :output, "log/cron.log"
+
 every 1.hour do
   rake "app:scrape_articles"
 end
