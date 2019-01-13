@@ -28,6 +28,7 @@ end
 
 group :development do
   gem "capistrano-rails"
+  gem "capistrano-rbenv"
   gem "capistrano3-puma"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
