@@ -67,4 +67,14 @@ RSpec.describe Article, type: :model do
       expect(Article.search_by_street("Banovic Strahinje")).to include(article)
     end
   end
+  
+  describe ".mark_all_done" do
+    it "makes all articles not panding" do
+      article = FactoryBot.create(:article, :pending => true)
+      
+      Article.mark_all_done
+      
+      expect(article.reload.pending?).to eq(false)
+    end
+  end
 end
