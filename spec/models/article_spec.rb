@@ -41,4 +41,25 @@ RSpec.describe Article, type: :model do
       expect(Article.recent).to eq(recent_articles.reverse)
     end
   end
+  
+  describe ".search_by_street" do
+    it "returns articles that have the street in the content" do
+      article = FactoryBot.create(:article, :content => "No water in Narodnog fronta")
+      
+      expect(Article.search_by_street("Narodnog fronta")).to include(article)
+    end
+    
+    it "returns articles that have the street in the title" do
+      article = FactoryBot.create(:article, :title => "No water in Narodnog fronta")
+      
+      expect(Article.search_by_street("Narodnog fronta")).to include(article)
+    end
+    
+    it "doesn't return articles that don't have the street in the title or the content" do
+      article = FactoryBot.create(:article, :title => "No water in Narodnog fronta")
+      
+      expect(Article.search_by_street("Bulevar cara Lazara")).to be_empty
+    end
+    
+  end
 end
