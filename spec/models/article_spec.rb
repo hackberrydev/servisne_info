@@ -61,5 +61,10 @@ RSpec.describe Article, type: :model do
       expect(Article.search_by_street("Bulevar cara Lazara")).to be_empty
     end
     
+    it "returns articles that have similar street in the title" do
+      article = FactoryBot.create(:article, :title => "No water in Banović Strahinje")
+      
+      expect(Article.search_by_street("Banovic Strahinje")).to include(article)
+    end
   end
 end
