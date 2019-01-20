@@ -21,4 +21,12 @@ RSpec.describe User, :type => :model do
       expect(user.admin?).to be_truthy
     end
   end
+  
+  describe "#streets_array" do
+    it "returns array of streets" do
+      user = FactoryBot.build(:user, :streets => "Banovic Strahinje, Bulevar, Liman")
+      
+      expect(user.streets_array).to eq(["Banovic Strahinje", "Bulevar", "Liman"])
+    end
+  end
 end

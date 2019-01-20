@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def make_admin
     update!(:admin => true)
   end
+  
+  def streets_array
+    streets.split(",").map(&:strip)
+  end
 end
