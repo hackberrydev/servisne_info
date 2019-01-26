@@ -42,6 +42,20 @@ RSpec.describe Article, type: :model do
     end
   end
   
+  describe ".pending" do
+    it "includes pending articles" do
+      article = FactoryBot.create(:article, :pending => true)
+      
+      expect(Article.pending).to include(article)
+    end
+    
+    it "doesn't include non pending articles" do
+      article = FactoryBot.create(:article, :pending => false)
+      
+      expect(Article.pending).to be_empty
+    end
+  end
+  
   describe ".search_by_street" do
     it "returns articles that have the street in the content" do
       article = FactoryBot.create(:article, :content => "No water in Narodnog fronta")
@@ -65,6 +79,16 @@ RSpec.describe Article, type: :model do
       article = FactoryBot.create(:article, :title => "No water in Banović Strahinje")
       
       expect(Article.search_by_street("Banovic Strahinje")).to include(article)
+    end
+  end
+  
+  describe ".mark_all_done" do
+    it "makes all articles not panding" do
+      article = FactoryBot.create(:article, :pending => true)
+      
+      Article.mark_all_done
+      
+      expect(article.reload.pending?).to eq(false)
     end
   end
 end

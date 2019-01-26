@@ -25,3 +25,7 @@ set :output, "log/cron.log"
 every 1.hour do
   rake "app:scrape_articles"
 end
+
+every "30 * * * *" do
+  rake "app:send_pending_articles"
+end

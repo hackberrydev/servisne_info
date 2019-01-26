@@ -8,4 +8,9 @@ namespace :app do
     factory = ArticleFactory.new(logger)
     factory.create(articles)
   end
+  
+  desc "Send pending articles"
+  task :send_pending_articles => :environment do
+    SendArticles.new.call
+  end
 end
