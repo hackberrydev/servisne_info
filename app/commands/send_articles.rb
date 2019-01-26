@@ -9,7 +9,9 @@ class SendArticles
   def send_emails_to_users
     User.find_each do |user|
       articles = user_articles(user)
-      UserMailer.new_articles(user, articles).deliver_now
+      if articles.any?
+        UserMailer.new_articles(user, articles).deliver_now
+      end
     end
   end
   

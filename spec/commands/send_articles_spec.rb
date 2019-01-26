@@ -27,4 +27,13 @@ RSpec.describe SendArticles do
     expect(@article1.reload.pending?).to be_falsy
     expect(@article2.reload.pending?).to be_falsy
   end
+  
+  it "doesn't send email if there are no articles" do
+    send_articles = SendArticles.new
+    @user.update!(:streets => "1300 kaplara")
+    
+    expect(UserMailer).not_to receive(:new_articles)
+    
+    send_articles.call
+  end
 end
