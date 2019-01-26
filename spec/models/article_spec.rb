@@ -42,6 +42,20 @@ RSpec.describe Article, type: :model do
     end
   end
   
+  describe ".pending" do
+    it "includes pending articles" do
+      article = FactoryBot.create(:article, :pending => true)
+      
+      expect(Article.pending).to include(article)
+    end
+    
+    it "doesn't include non pending articles" do
+      article = FactoryBot.create(:article, :pending => false)
+      
+      expect(Article.pending).to be_empty
+    end
+  end
+  
   describe ".search_by_street" do
     it "returns articles that have the street in the content" do
       article = FactoryBot.create(:article, :content => "No water in Narodnog fronta")
