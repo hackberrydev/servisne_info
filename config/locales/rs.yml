@@ -25,6 +25,11 @@ rs:
         password_confirmation: "Potvrda lozinke"
         current_password: "Trenutna lozinka"
     errors:
+      models: 
+        user:
+          attributes:
+            password:
+              too_short: "je suviše kratka"
       messages:
         blank: "je obavezno polje"
         confirmation: "se ne poklapa"
