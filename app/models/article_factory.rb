@@ -10,6 +10,7 @@ class ArticleFactory
       else
         @logger.info "Save article - #{article.url}"
         article.save!
+        Event.create!(:message => "New article - #{article.url}")
       end
     end
   end
