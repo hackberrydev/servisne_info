@@ -20,6 +20,32 @@ body {
   line-height: 1.42857143;
 }
 
+.form-text {
+  font-size: 90%;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.form-control:-moz-placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.form-control:focus {
+  outline: none;
+}
+
 .alert {
   margin-top: 20px;
 }
