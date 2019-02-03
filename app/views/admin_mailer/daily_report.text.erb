@@ -1,0 +1,5 @@
+Dnevni izveštaj za <%= Date.today %>
+
+<% @events.each do |event| %>
+  - <%= event.message %>
+<% end %>
