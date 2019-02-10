@@ -29,3 +29,7 @@ end
 every "30 * * * *" do
   rake "app:send_pending_articles"
 end
+
+every "15 6 * * *" do
+  rake "app:send_daily_report"
+end

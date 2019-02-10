@@ -22,5 +22,15 @@ RSpec.describe ArticleFactory do
       
       expect(Article.count).to eq(1)
     end
+    
+    it "creates event" do
+      article = FactoryBot.build(:article)
+      
+      @factory.create([article])
+      
+      event = Event.last
+      
+      expect(event.message).to eq("New article - #{article.url}")
+    end
   end
 end

@@ -36,4 +36,14 @@ RSpec.describe SendArticles do
     
     send_articles.call
   end
+  
+  it "creates event" do
+    send_articles = SendArticles.new
+    
+    send_articles.call
+    
+    event = Event.last
+    
+    expect(event.message).to eq("Sent email to user #{@user.email}")
+  end
 end
