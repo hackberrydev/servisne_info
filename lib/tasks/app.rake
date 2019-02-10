@@ -13,4 +13,11 @@ namespace :app do
   task :send_pending_articles => :environment do
     SendArticles.new.call
   end
+  
+  desc "Send daily report"
+  task :send_daily_report => :environment do
+    Rails.application.credentials.admins.each do |email|
+      AdminMailer.daily_report(email, Event.recent).deliver_now
+    end
+  end
 end
