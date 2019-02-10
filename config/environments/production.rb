@@ -92,6 +92,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { :host => "servisne.info" }
+
   config.action_mailer.smtp_settings = {
     :address        => Rails.application.credentials.smtp_settings_address,
     :domain         => Rails.application.credentials.smtp_settings_domain,
