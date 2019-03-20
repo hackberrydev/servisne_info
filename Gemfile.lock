@@ -58,7 +58,7 @@ GEM
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
     builder (3.2.3)
-    byebug (10.0.2)
+    byebug (11.0.1)
     capistrano (3.11.0)
       airbrussh (>= 1.0.0)
       i18n
