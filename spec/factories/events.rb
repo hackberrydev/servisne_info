@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :event do
-    message "New article"
+    message { "New article" }
   end
 end
