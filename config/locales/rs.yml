@@ -6,26 +6,27 @@ rs:
   save: "Sačuvaj"
   about: "O servisu"
   contact: "Kontakt"
+  terms: "Uslovi"
   remember_me: "Zapamti me"
   forgot_password_instruction: "Pošalji mi instrukcije za reset lozinke"
   forgot_password: "Zaboravili ste lozinku?"
   recent_articles: "Poslednje servisne informacije"
   cancel_account: "Obrišite nalog"
   back: "Nazad"
-  
+
   errors:
-    messages: 
+    messages:
       not_saved: "Molimo Vas ispravite greške"
-  
+
   activerecord:
     attributes:
-      user: 
+      user:
         streets: "Ulice"
         password: "Lozinka"
         password_confirmation: "Potvrda lozinke"
         current_password: "Trenutna lozinka"
     errors:
-      models: 
+      models:
         user:
           attributes:
             password:

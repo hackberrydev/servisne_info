@@ -23,6 +23,11 @@
   </div>
 
   <%= f.submit t("sign_up"), :class => "btn btn-primary" %>
+
+  <p class="mt-3">
+    Pre registracije, molimo vas da se upoznate sa
+    <%= link_to "uslovima korišćenja", terms_path, :target => "_blank" %>.
+  </p>
 <% end %>
 
 <%= render "users/shared/links" %>
