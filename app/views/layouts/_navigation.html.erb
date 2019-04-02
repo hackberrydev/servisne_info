@@ -11,6 +11,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <%= nav_link(t("about"), about_path) %>
+              <%= nav_link(t("terms"), terms_path) %>
               <%= nav_link(t("contact"), contact_path) %>
               <% if signed_in? %>
                 <% if admin_page? %>
