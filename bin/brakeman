@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+gem install brakeman --no-ri --no-rdoc
+brakeman -z --table-width 300
