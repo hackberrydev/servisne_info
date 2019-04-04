@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+gem install bundler-audit
+bundle audit check --update
