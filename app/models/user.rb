@@ -5,6 +5,8 @@ class User < ApplicationRecord
   paginates_per 50
   
   validates :streets, :presence => true
+  
+  scope :recent, -> { where("created_at > ?", 24.hours.ago) }
 
   def make_admin
     update!(:admin => true)

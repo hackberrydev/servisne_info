@@ -1,6 +1,7 @@
 Dnevni izveštaj za <%= Date.today %>
 
   - Ukupan broj korisnika <%= User.count %>
+  - Broj novih korisnika <%= User.recent.count %>
 <% @events.each do |event| %>
   - <%= event.message %>
 <% end %>
