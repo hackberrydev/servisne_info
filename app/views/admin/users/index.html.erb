@@ -15,7 +15,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.streets %></td>
-        <td><%= user.created_at %></td>
+        <td><%= user.created_at.to_date %></td>
       </tr>
     <% end %>
   </tbody>
