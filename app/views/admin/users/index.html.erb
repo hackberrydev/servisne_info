@@ -7,15 +7,17 @@
       <th scope="col">Email</th>
       <th scope="col">Streets</th>
       <th scope="col">Created At</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr id="<%= dom_id(user) %>">
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.streets %></td>
         <td><%= user.created_at.to_date %></td>
+        <td class="text-right"><%= delete_user_link(user) %></td>
       </tr>
     <% end %>
   </tbody>

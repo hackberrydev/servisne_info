@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get "/terms", :to => "pages#terms"
 
   namespace :admin do
-    resources :users, :only => :index
+    resources :users, :only => [:index, :destroy]
   end
 end

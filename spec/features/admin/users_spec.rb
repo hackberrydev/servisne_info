@@ -16,5 +16,16 @@ feature "Users admin" do
     expect(page).to have_content(@admin.email)
     expect(page).to have_content(@user.email)
   end
+  
+  scenario "The admin deletes a user" do
+    visit admin_users_path
+    
+    within "#user_#{@user.id}" do
+      click_link "Delete"
+    end
+    
+    expect(page).to have_content("User was succesfully deleted.")
+    expect(page).not_to have_content(@user.email)
+  end
 end
 
