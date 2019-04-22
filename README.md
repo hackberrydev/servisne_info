@@ -7,7 +7,7 @@ Rails project running http://www.servisne.info/.
 ## Contributing
 
 Do you want to contribute to the project? Great! Before writing any code, please
-get in touch by sending me an email to nebojsa.stricevic@gmail.com.
+get in touch by sending me an email to strika@hackberry.dev.
 
 Feel free to check the list of existing
 [issues](https://github.com/hackberrydev/servisne_info/issues) or propose new
