@@ -4,8 +4,18 @@
 
 Rails project running http://www.servisne.info/.
 
+## Contributing
+
+Do you want to contribute to the project? Great! Before writing any code, please
+get in touch by sending me an email to nebojsa.stricevic@gmail.com.
+
+Feel free to check the list of existing
+[issues](https://github.com/hackberrydev/servisne_info/issues) or propose new
+features.
+
 ## Services
 
-- [UptimeRobot](uptimerobot.com)
-- [Semaphore](semaphoreci.com)
-- [Sentry](sentry.io)
+- [Depfu](https://depfu.com/)
+- [Semaphore](https://semaphoreci.com)
+- [Sentry](https://sentry.io)
+- [UptimeRobot](https://uptimerobot.com)
