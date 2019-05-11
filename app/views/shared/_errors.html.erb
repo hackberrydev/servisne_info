@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <h5>Ispravite greške:</h5>
+
+    <ul class="no-bullet">
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
