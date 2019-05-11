@@ -10,4 +10,16 @@ class Admin::UsersController < Admin::ApplicationController
     flash[:notice] = "User was succesfully deleted."
     redirect_to admin_users_path
   end
+  
+  def edit
+    @user = ::User.find(params[:id])
+  end
+  
+  def update
+    @user = ::User.find(params[:id])
+    @user.update(:streets => params[:user][:streets])
+    
+    flash[:notice] = "User was succesfully saved."
+    redirect_to admin_users_path
+  end
 end

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <%= form_for([:admin, @user]) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :streets, "Streets" %>
+        <%= f.text_field :streets, :class => "form-control" %>
+      </div>
+
+      <%= f.submit "Save", :class => "btn btn-primary" %>
+    <% end %>
+      
+  </div>
+</div>
