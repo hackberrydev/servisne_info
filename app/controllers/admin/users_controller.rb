@@ -17,9 +17,11 @@ class Admin::UsersController < Admin::ApplicationController
   
   def update
     @user = ::User.find(params[:id])
-    @user.update(:streets => params[:user][:streets])
-    
-    flash[:notice] = "User was succesfully saved."
-    redirect_to admin_users_path
+    if @user.update(:streets => params[:user][:streets])
+      flash[:notice] = "User was succesfully saved."
+      redirect_to admin_users_path
+    else
+      render :edit
+    end
   end
 end

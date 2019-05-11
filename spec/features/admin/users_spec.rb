@@ -43,5 +43,15 @@ feature "Users admin" do
       expect(page).to have_content("Bulevar")
     end
   end
+  
+  scenario "The admin tries to set streets to blank value" do
+    visit edit_admin_user_path(@user)
+    
+    fill_in "Streets", :with => ""
+    click_button "Save"
+    
+    expect(page).to have_content("Ulice je obavezno polje")
+  end
+  
 end
 
