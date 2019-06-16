@@ -265,8 +265,7 @@ GEM
       tilt
     sentry-raven (2.9.0)
       faraday (>= 0.7.6, < 1.0)
-    spring (2.0.2)
-      activesupport (>= 4.2)
+    spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
