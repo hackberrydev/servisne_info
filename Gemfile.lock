@@ -168,7 +168,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.2.10)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     net-http-digest_auth (1.4.1)
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
@@ -263,7 +263,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-raven (2.9.0)
+    sentry-raven (2.11.0)
       faraday (>= 0.7.6, < 1.0)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
