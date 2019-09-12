@@ -31,6 +31,8 @@ rs:
           attributes:
             password:
               too_short: "je suviše kratka"
+            email:
+              taken: "je već zauzet"
       messages:
         blank: "je obavezno polje"
         confirmation: "se ne poklapa"
