@@ -91,6 +91,12 @@ bundle exec cap production puma:config
 bundle exec cap production puma:nginx_config
 ```
 
+Add the following configuration to the Nginx configuration file:
+
+```
+proxy_set_header origin 'http://$host';
+```
+
 Disable paswordless sudo!
 
 Remove default Nginx site:
