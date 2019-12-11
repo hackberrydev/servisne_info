@@ -4,7 +4,7 @@ feature "Authentication" do
   include AuthenticationHelpers
 
   scenario "A visitor creates an account" do
-    sign_up("john@example.com", "pass123", "Baker street")
+    sign_up("john@example.com", "pass123", "Baker street", "Dunav")
     expect(page).to have_content("Uspešno ste se prijаvili.")
   end
 

@@ -22,6 +22,11 @@
     <div class="form-text">Unesite ulice i delove grada u Novom Sadu koje vas interesuju, odvojene zarezom. Preporučujemo Vam da unesete naziv ulice u svim oblicima koji se koriste u redovnoj upotrebi. Na primer "Svetozara Miletića" i "Miletićeva". Nije neophodno koristiti latinične karaktere.</div>
   </div>
 
+  <div class="form-group">
+    <%= label_tag :captcha_answer, Rails.application.credentials.captcha_question %>
+    <%= text_field_tag :captcha_answer, "", :class => "form-control" %>
+  </div>
+
   <%= f.submit t("sign_up"), :class => "btn btn-primary" %>
 
   <p class="mt-3">
