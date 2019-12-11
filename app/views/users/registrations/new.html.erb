@@ -25,6 +25,7 @@
   <div class="form-group">
     <%= label_tag :captcha_answer, Rails.application.credentials.captcha_question %>
     <%= text_field_tag :captcha_answer, "", :class => "form-control" %>
+    <div class="form-text">Sigurnosno pitanje.</div>
   </div>
 
   <%= f.submit t("sign_up"), :class => "btn btn-primary" %>
