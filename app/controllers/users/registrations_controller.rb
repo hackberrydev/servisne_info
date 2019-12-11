@@ -11,7 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if params[:captcha_answer] != Rails.application.credentials.captcha_answer
+    correct_answer = Rails.application.credentials.captcha_answer.downcase
+
+    if params[:captcha_answer].to_s.downcase != correct_answer
       flash[:alert] = "Odgovor na sigurnosno pitanje nije tačan."
       redirect_to new_user_registration_path
     else
