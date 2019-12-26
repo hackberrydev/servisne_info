@@ -33,3 +33,7 @@ end
 every "15 6 * * *" do
   rake "app:send_daily_report"
 end
+
+every "0 6 * * *" do
+  rake "app:backup_users"
+end
