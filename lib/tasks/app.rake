@@ -41,4 +41,21 @@ namespace :app do
       end
     end
   end
+
+  desc "Backup users"
+  task :backup_users => :environment do
+    puts "Backup started..."
+
+    s3 = Aws::S3::Client.new
+    bucket = Rails.application.credentials.bucket!
+    users = ::User.pluck(:email, :streets)
+
+    s3.put_object(
+      :body => users.to_s,
+      :bucket => bucket,
+      :key => "users-#{Date.today.iso8601}.rb"
+    )
+
+    puts "Backup done."
+  end
 end
