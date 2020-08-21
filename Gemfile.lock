@@ -135,7 +135,7 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.0.0)
+    faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     globalid (0.4.2)
@@ -295,7 +295,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-raven (3.0.0)
+    sentry-raven (3.0.2)
       faraday (>= 1.0)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
