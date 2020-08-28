@@ -295,7 +295,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-raven (3.0.2)
+    sentry-raven (3.0.3)
       faraday (>= 1.0)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
