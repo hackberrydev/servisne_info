@@ -31,5 +31,8 @@ module ServisneInfo
     config.generators.system_tests = nil
 
     config.i18n.default_locale = :rs
+
+    # Custom configuration
+    config.repo_url = "https://github.com/hackberrydev/servisne_info"
   end
 end
