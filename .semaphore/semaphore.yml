@@ -11,7 +11,7 @@ blocks:
         - name: RSpec
           commands:
             - sudo systemctl start postgresql
-            - gem update bundler
+            - gem install bundler -v 2.0.2
             - checkout
             - bundle install --deployment --path .bundle
             - 'bundle exec rake db:setup'
