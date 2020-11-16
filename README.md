@@ -2,7 +2,7 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/hackberry/servisne_info/branches/master/badge.svg)](https://semaphoreci.com/hackberry/servisne_info)
 
-Rails project running http://www.servisne.info/.
+Rails project running [Servisne Info](https://www.servisne.info/).
 
 ## Contributing
 
