@@ -1,0 +1,20 @@
+version: v1.0
+name: Deploy to production
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Deploy
+    task:
+      secrets:
+        - name: id_rsa_semaphoreci
+      jobs:
+        - name: Deploy
+          commands:
+            - checkout
+            - chmod 0600 ~/.ssh/id_rsa_semaphoreci
+            - ssh-add ~/.ssh/id_rsa_semaphoreci
+            - gem install bundler -v 2.0.2
+            - bundle install --path .bundle
+            - bin/cap production deploy

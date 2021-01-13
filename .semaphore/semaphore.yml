@@ -7,15 +7,26 @@ agent:
 blocks:
   - name: Unit Tests
     task:
+      secrets:
+        - name: servisne-master-key
       jobs:
         - name: RSpec
           commands:
-            - sudo systemctl start postgresql
+            - sem-service start postgres
+            - psql -U postgres -h localhost -c "CREATE USER developer WITH PASSWORD 'developer';"
+            - psql -U postgres -h localhost -c "ALTER USER developer WITH SUPERUSER;"
             - checkout
+            - cp config/database.yml.semaphore2 config/database.yml
             - gem install bundler -v 2.0.2
             - gem update --system
             - bundle update --bundler
             - bundle install --deployment --path .bundle
-            - 'bundle exec rake db:setup'
-            - 'bundle exec rake db:test:prepare'
-            - bundle exec rake spec
+            - 'bin/rails db:create db:schema:load'
+            - bin/brakeman
+            - bin/bundle_audit
+            - bin/rails spec
+promotions:
+  - name: Deploy
+    pipeline_file: production-deploy.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"

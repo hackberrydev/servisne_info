@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  username: developer
+  password: developer
+
+development:
+  <<: *default
+  database: servisne_info_development
+
+test: &test
+  <<: *default
+  database: servisne_info_test
+
+cucumber:
+  <<: *test
