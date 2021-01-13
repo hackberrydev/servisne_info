@@ -25,3 +25,8 @@ blocks:
             - bin/brakeman
             - bin/bundle_audit
             - bin/rails spec
+promotions:
+  - name: Deploy
+    pipeline_file: production-deploy.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"
