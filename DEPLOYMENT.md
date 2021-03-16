@@ -1,16 +1,21 @@
 # Server Setup And Deployment Instructions
 
+Add the new server to `~/.ssh/config`. Instead of `server_name`, use the correct
+server name.
+
 Create user on the server:
 
 ```bash
-adduser developer
+adduser servisne_info
 ```
 
 Add the user to sudoers:
 
 ```bash
-usermod -aG sudo developer
+usermod -aG sudo servisne_info
 ```
+
+Add the public SSH key to `~/.ssh/authorized_keys`.
 
 Update the system:
 
@@ -21,7 +26,7 @@ sudo apt-get update && sudo apt-get -y upgrade
 Install dependencies (git, ruby, nginx, passenger, etc.):
 
 ```bash
-sudo apt-get install -y ruby ruby-dev build-essential git nginx postgresql \
+sudo apt-get install -y ruby ruby-dev rbenv build-essential git nginx postgresql \
   postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev
 ```
 
@@ -34,34 +39,29 @@ gem install bundler
 Create PostgreSQL user:
 
 ```bash
-sudo -u postgres createuser -s developer
+sudo -u postgres createuser -s servisne_info
 ```
 
 Set the PostgreSQL user password:
 
 ```bash
 sudo -u postgres psql
-\password developer
+\password servisne_info
 \q
 ```
 
-Put database password in `application_name.env`:
+Put the database password in `servisne_info.env` (this file will be used by
+systemd):
 
 ```bash
-APPLICATION_NAME_DATABASE_PASSWORD="..."
+SERVISNE_INFO_DATABASE_PASSWORD="..."
 ```
 
-Load the new environment variables:
-
-```bash
-source ~/.bashrc
-```
-
-Copy `secrets.yml.key` to the server:
+Copy `master.key` to the server:
 
 ```bash
 mkdir -p database/shared/config
-scp config/secrets.yml.key server_name:database/shared/config
+scp config/master.key server_name:database/shared/config
 ```
 
 Put the new production server IP to `config/deploy/production.rb`.
@@ -69,26 +69,27 @@ Put the new production server IP to `config/deploy/production.rb`.
 Deploy, from the development machine (it will fail):
 
 ```bash
-bundle exec cap production deploy
+bin/cap production deploy
 ```
 
 Create database (on the server):
 
 ```bash
-bundle exec rake db:create
+bin/rails db:create RAILS_ENV=production
 ```
 
-Configure passwordless sudo - put following line to `/etc/sudoers`:
+Configure passwordless sudo - put following line to `/etc/sudoers` with
+`visudo`:
 
 ```bash
-developer ALL=(ALL) NOPASSWD: ALL
+servisne_info ALL=(ALL) NOPASSWD: ALL
 ```
 
 Configure Nginx and Puma:
 
 ```bash
-bundle exec cap production puma:config
-bundle exec cap production puma:nginx_config
+bin/cap production puma:config
+bin/cap production puma:nginx_config
 ```
 
 Add the following configuration to the Nginx configuration file:
@@ -103,44 +104,44 @@ Remove default Nginx site:
 
 ```bash
 sudo rm /etc/nginx/sites-enabled/default
-sudo service nginx restart
+sudo systemctl restart nginx
 ```
 
 To restore a database dump, execute:
 
 ```bash
-scp application_name.dump server_name:~
-pg_restore --no-privileges --no-owner -d application_name_production application_name.dump
+scp servisne_info.dump server_name:~
+pg_restore --no-privileges --no-owner -d servisne_info_production servisne_info.dump
 ```
 
 Deploy again:
 
 ```bash
-bundle exec cap production deploy
+bin/cap production deploy
 ```
 
-Copy the following configuration to `/etc/systemd/system/application_name.service`:
+Copy the following configuration to `/etc/systemd/system/servisne_info.service`:
 
 ```bash
 [Unit]
-Description=Application Name Server
+Description=Servisne Info Server
 
 [Service]
 Type=simple
-User=developer
-Group=developer
-WorkingDirectory=/home/developer/application_name/current
-EnvironmentFile=/home/developer/application_name.env
-ExecStart=/bin/bash -lc 'bundle exec puma -C /home/developer/application_name/shared/puma.rb'
+User=servisne_info
+Group=servisne_info
+WorkingDirectory=/home/servisne_info/servisne_info/current
+EnvironmentFile=/home/servisne_info/servisne_info.env
+ExecStart=/bin/bash -lc 'bundle exec puma -C /home/servisne_info/servisne_info/shared/puma.rb'
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Copy the following logrotate configuration to /etc/logrotate.d/application_name:
+Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
 
-/home/developer/application_name/shared/log/*.log {
+/home/servisne_info/servisne_info/shared/log/*.log {
   daily
   rotate 7
   create
