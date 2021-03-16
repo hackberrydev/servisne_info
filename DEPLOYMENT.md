@@ -30,6 +30,12 @@ sudo apt-get install -y ruby ruby-dev rbenv build-essential git nginx postgresql
   postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev
 ```
 
+Install the required version of Ruby:
+
+```
+rbenv install 2.7.1
+```
+
 Install bundler:
 
 ```bash
