@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: servisne_info_production
-  username: servisne
+  username: servisne_info
   password: <%= ENV['SERVISNE_INFO_DATABASE_PASSWORD'] %>
