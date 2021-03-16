@@ -139,6 +139,12 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+Enable the service:
+
+```bash
+sudo systemctl enable servisne_info.service
+```
+
 Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
 
 /home/servisne_info/servisne_info/shared/log/*.log {
@@ -165,3 +171,5 @@ sudo ufw allow OpenSSH
 sudo ufw allow https
 sudo ufw enable
 ```
+
+Restart the server.
