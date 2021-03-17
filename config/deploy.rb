@@ -11,7 +11,7 @@ set :repo_url, "git@github.com:hackberryco/servisne_info.git"
 set :deploy_to, "/home/servisne_info/servisne_info"
 
 set :rbenv_type, :user
-set :rbenv_ruby, "2.7.1"
+set :rbenv_ruby, "2.7.2"
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} rbenv exec"
 set :rbenv_roles, :all # default value
 
