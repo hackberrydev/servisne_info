@@ -157,7 +157,7 @@ WantedBy=multi-user.target
 Enable the service:
 
 ```bash
-sudo systemctl enable servisne_info.service
+sudo systemctl enable puma_servisne_info_production.service
 ```
 
 Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
