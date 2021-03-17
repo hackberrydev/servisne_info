@@ -108,6 +108,13 @@ proxy_set_header origin 'http://$host';
 
 Disable paswordless sudo!
 
+Enable restarting Puma without a password, by adding the following line to
+`/etc/sudoers`:
+
+```bash
+servisne_info ALL=(ALL) NOPASSWD: /bin/systemctl restart puma_servisne_info_production
+```
+
 Remove default Nginx site:
 
 ```bash
@@ -128,7 +135,7 @@ Deploy again:
 bin/cap production deploy
 ```
 
-Copy the following configuration to `/etc/systemd/system/servisne_info.service`:
+Copy the following configuration to `/etc/systemd/system/puma_servisne_info_production.service`:
 
 ```bash
 [Unit]
