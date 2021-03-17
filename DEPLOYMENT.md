@@ -26,9 +26,11 @@ sudo apt-get update && sudo apt-get -y upgrade
 Install dependencies (git, ruby, nginx, passenger, etc.):
 
 ```bash
-sudo apt-get install -y ruby ruby-dev rbenv build-essential git nginx postgresql \
+sudo apt-get install -y ruby ruby-dev build-essential git nginx postgresql \
   postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev
 ```
+
+Install rbenv.
 
 Install the required version of Ruby:
 
