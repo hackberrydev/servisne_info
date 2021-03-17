@@ -68,8 +68,8 @@ SERVISNE_INFO_DATABASE_PASSWORD="..."
 Copy `master.key` to the server:
 
 ```bash
-mkdir -p database/shared/config
-scp config/master.key server_name:database/shared/config
+mkdir -p servisne_info/shared/config
+scp config/master.key server_name:servisne_info/shared/config
 ```
 
 Put the new production server IP to `config/deploy/production.rb`.
