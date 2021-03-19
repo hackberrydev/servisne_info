@@ -103,6 +103,7 @@ bin/cap production puma:nginx_config
 Add the following configuration to the Nginx configuration file:
 
 ```
+server_name www.servisne.info; # Replace the existing server_name directive.
 proxy_set_header origin 'http://$host';
 ```
 
@@ -171,6 +172,7 @@ Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
   delaycompress
 }
 
+Install the SSL certificate using https://certbot.eff.org.
 
 ### Security
 
