@@ -2,7 +2,7 @@
 lock "~> 3.16.0"
 
 set :application, "servisne_info"
-set :repo_url, "git@github.com:hackberryco/servisne_info.git"
+set :repo_url, "git@github.com:hackberrydev/servisne_info.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
