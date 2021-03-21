@@ -185,6 +185,7 @@ Setup firewall:
 
 ```bash
 sudo ufw allow OpenSSH
+sudo ufw allow http
 sudo ufw allow https
 sudo ufw enable
 ```
