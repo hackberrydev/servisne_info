@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/contact", :to => "pages#contact"
   get "/terms", :to => "pages#terms"
 
+  resource :test, :only => %i[show update]
+
   namespace :admin do
     resources :users, :only => [:index, :destroy, :edit, :update]
   end

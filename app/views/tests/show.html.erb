@@ -1,0 +1,10 @@
+<h2>Test</h2>
+
+<% if @message %>
+  The message is: <%= @message %>
+<% end %>
+
+<%= form_for :test, :method => :patch do |f| %>
+  <%= f.text_field :message %>
+  <%= f.submit %>
+<% end %>
