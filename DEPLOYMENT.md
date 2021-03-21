@@ -104,7 +104,18 @@ Add the following configuration to the Nginx configuration file:
 
 ```
 server_name www.servisne.info; # Replace the existing server_name directive.
-proxy_set_header origin 'http://$host';
+
+location @puma_servisne_info_production {
+  proxy_pass http://puma_servisne_info_production;
+  proxy_set_header  Host $host;
+  proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header  X-Forwarded-Proto $scheme;
+  proxy_set_header  X-Forwarded-Ssl on; # Optional
+  proxy_set_header  X-Forwarded-Port $server_port;
+  proxy_set_header  X-Forwarded-Host $host;
+  access_log /home/servisne_info/servisne_info/shared/log/nginx.access.log;
+  error_log /home/servisne_info/servisne_info/shared/log/nginx.error.log;
+}
 ```
 
 Disable paswordless sudo!
