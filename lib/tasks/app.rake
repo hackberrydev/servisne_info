@@ -46,10 +46,16 @@ namespace :app do
   task :backup_users => :environment do
     puts "Backup started..."
 
-    bucket = Rails.application.credentials.bucket!
-    region = Rails.application.credentials.bucket_region!
+    bucket = Rails.application.credentials.backup_bucket!
+    region = Rails.application.credentials.backup_region!
+    access_key_id = Rails.application.credentials.backup_access_key_id!
+    secret_access_key = Rails.application.credentials.backup_secret_access_key!
 
-    s3 = Aws::S3::Client.new(:region => region)
+    s3 = Aws::S3::Client.new(
+      :region            => region,
+      :access_key_id     => access_key_id,
+      :secret_access_key => secret_access_key
+    )
     users = ::User.pluck(:email, :streets)
 
     s3.put_object(
