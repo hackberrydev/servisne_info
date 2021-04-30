@@ -66,4 +66,15 @@ namespace :app do
 
     puts "Backup done."
   end
+
+  desc "Scrape URL from the configuration file"
+  task :scrape_url => :environment do
+    logger = Logger.new("log/url-scrapper.log")
+    scrapper =  ::UrlScrapper.new(
+      Rails.application.credentials.scrape_url,
+      Rails.application.credentials.scrape_params
+    )
+
+    logger.info JSON.parse(scrapper.scrape).to_s
+  end
 end
