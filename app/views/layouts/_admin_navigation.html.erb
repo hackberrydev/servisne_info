@@ -1,3 +1,4 @@
 <% if current_user.admin? %>
   <%= link_to "Users", admin_users_path, :class => "nav-link" %>
+  <%= link_to "Logs", admin_logs_path, :class => "nav-link" %>
 <% end %>
