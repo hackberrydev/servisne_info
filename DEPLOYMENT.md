@@ -174,14 +174,16 @@ sudo systemctl enable puma_servisne_info_production.service
 
 Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
 
+```
 /home/servisne_info/servisne_info/shared/log/*.log {
-  daily
-  rotate 7
+  rotate 4
   create
-  size 10M
+  size 1M
+  notifempty
   compress
   delaycompress
 }
+```
 
 Install the SSL certificate using https://certbot.eff.org.
 
