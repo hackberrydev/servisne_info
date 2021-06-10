@@ -37,7 +37,3 @@ end
 every "0 6 * * *" do
   rake "app:backup_users"
 end
-
-every 10.minutes do
-  rake "app:scrape_url"
-end
