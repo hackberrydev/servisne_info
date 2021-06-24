@@ -21,12 +21,21 @@ class Site021
 
     page = mechanize.get(article.url)
     intro = page.at(".storyLead").text.strip
-    body = page.at(".storyBody .innerBody").text.strip
+    paragraphs = page.search(".storyBody .innerBody div")
+                     .map { |p| p.text.strip }
+                     .select(&:present?)
+    body = remove_news_for_vilages(paragraphs).join
     article.content = intro + body
 
     @logger.info "Scrape article - #{article.url}"
 
     article
+  end
+
+  def remove_news_for_vilages(news)
+    return news unless news.first == "NOVI SAD"
+
+    news.drop(1).take_while { |n| n.upcase != n }
   end
 
   def mechanize
