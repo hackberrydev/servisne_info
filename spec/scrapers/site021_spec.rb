@@ -7,11 +7,11 @@ RSpec.describe Site021, :vcr do
     articles = scraper.scrape
 
     expect(articles.count).to eq(20)
-    
-    article = articles.third
-    expect(article.title).to eq("Limani III i IV danas bez tople vode, Spens, NIS i Merkator bez grejanja")
-    expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/203381/Limani-III-i-IV-danas-bez-tople-vode-Spens-NIS-i-Merkator-bez-grejanja.html")
-    expect(article.content).to match(/Limani III i IV u subotu 8. decembra biće bez tople vode./)
-    expect(article.content).to match(/Od 11 časova bez grejanja su Spens, zgrada NIS-a i Merkator./)
+
+    article = articles[4]
+    expect(article.title).to eq("Isključenja struje za četvrtak, 24. jun")
+    expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/277402/Iskljucenja-struje-za-cetvrtak-24-jun.html")
+    expect(article.content).to match(/Delovi Novog Sada i Rakovca u četvrtak, 24. juna neće imati struje./)
+    expect(article.content).to match(/Železnička 6-30, 3-9, Vase Stajića 22-22c, firme: Zoil Vojvodina, banke, od 8:30 do 10:30 časova/)
   end
 end
