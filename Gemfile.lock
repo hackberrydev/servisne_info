@@ -142,7 +142,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.11.1)
+    ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -167,10 +167,9 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
+    listen (3.7.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     lograge (0.12.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -252,8 +251,8 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rake (13.0.6)
-    rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.4.0)
     request_store (1.5.1)
@@ -280,7 +279,6 @@ GEM
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
     ruby2_keywords (0.0.4)
-    ruby_dep (1.5.0)
     rubyntlm (0.6.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -360,7 +358,7 @@ DEPENDENCIES
   factory_bot_rails
   jquery-rails
   kaminari
-  listen (>= 3.0.5, < 3.2)
+  listen
   lograge
   mechanize
   pg (>= 0.18, < 2.0)
