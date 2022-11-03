@@ -24,7 +24,7 @@ gem "whenever", require: false
 group :development, :test do
   gem "byebug"
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 3.7"
+  gem "rspec-rails"
 end
 
 group :development do
