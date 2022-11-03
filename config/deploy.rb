@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.16"
 
 set :application, "servisne_info"
 set :repo_url, "https://github.com/hackberrydev/servisne_info.git"
