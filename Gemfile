@@ -10,8 +10,8 @@ gem "jquery-rails"
 gem "kaminari"
 gem "lograge"
 gem "mechanize"
-gem "pg", ">= 0.18", "< 2.0"
-gem "pg_search"
+gem "pg", "~> 1.4"
+gem "pg_search", "~> 2.3"
 gem "puma", "~> 5.2"
 gem "sass-rails", "~> 5.0"
 gem "sentry-raven"
@@ -36,5 +36,5 @@ end
 group :test do
   gem "capybara"
   gem "webmock"
-  gem "vcr", "~> 4.0"
+  gem "vcr", "~> 6.0"
 end
