@@ -2,7 +2,7 @@
   <div class="col-sm-12">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-group">
         <%= f.label :email %>
@@ -14,7 +14,7 @@
           Currently waiting confirmation for: <%= resource.unconfirmed_email %>
         </small>
       <% end %>
-    
+
       <div class="form-group">
         <%= f.label :streets %>
         <%= f.text_field :streets, :class => "form-control" %>
