@@ -36,5 +36,5 @@ end
 group :test do
   gem "capybara"
   gem "webmock"
-  gem "vcr", "~> 4.0"
+  gem "vcr", "~> 6.0"
 end
