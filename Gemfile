@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.1.7"
+gem "rails", "~> 7.0.4"
 
 gem "aws-sdk-s3", "~> 1.60"
 gem "bootstrap", "~> 4.3.1"
