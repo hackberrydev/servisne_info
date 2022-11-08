@@ -107,39 +107,6 @@ a, a:hover, a:focus {
   padding-right: 0;
 }
 
-.avatar {
-  background: image-url('about.png') no-repeat;
-  display: inline-block;
-  height: 200px;
-  width: 200px;
-}
-
-.tanja {
-  background-position: 0 -630px;
-  border-radius: 10px 100px 100px 100px;
-}
-
-.tanja:hover {
-  background-position: 0 -420px;
-}
-
-.tanja.hover {
-  background-position: 0 -420px;
-}
-
-.nebojsa {
-  background-position: 0 -210px;
-  border-radius: 100px 10px 100px 100px;
-}
-
-.nebojsa:hover {
-  background-position: 0 0;
-}
-
-.nebojsa.hover {
-  background-position: 0 0;
-}
-
 h1, h2, h3, h4, h5, h6 {
   color: #AD235E;
   padding-bottom: 20px;
