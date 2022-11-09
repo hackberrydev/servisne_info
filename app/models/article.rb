@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  include Model::PgSearch
+  include PgSearch::Model
 
   validates :title, :content, :presence => true
   validates :url, :presence => true, :uniqueness => true
