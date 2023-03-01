@@ -27,7 +27,8 @@ Install dependencies (git, ruby, nginx, passenger, etc.):
 
 ```bash
 sudo apt-get install -y ruby ruby-dev build-essential git nginx postgresql \
-  postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev
+  postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev \
+  libyaml-dev
 ```
 
 Install rbenv.
@@ -35,7 +36,7 @@ Install rbenv.
 Install the required version of Ruby:
 
 ```
-rbenv install 2.7.1
+rbenv install 3.2.1
 ```
 
 Install bundler:
