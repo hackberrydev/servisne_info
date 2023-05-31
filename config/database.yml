@@ -6,10 +6,16 @@ default: &default
 development:
   <<: *default
   database: servisne_info_development
+  host: database
+  username: developer
+  password: developer
 
 test:
   <<: *default
   database: servisne_info_test
+  host: database
+  username: developer
+  password: developer
 
 production:
   <<: *default
