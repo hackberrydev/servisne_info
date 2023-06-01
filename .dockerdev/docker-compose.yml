@@ -2,7 +2,7 @@ x-app: &app
   build:
     context: .
     args:
-      RUBY_VERSION: '3.2.1'
+      RUBY_VERSION: '3.2.2'
   image: servisne_info:1.0.0
   environment: &env
     RAILS_ENV: ${RAILS_ENV:-development}
