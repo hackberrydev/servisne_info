@@ -6,6 +6,8 @@ class Article < ApplicationRecord
   validates :title, :content, :presence => true
   validates :url, :presence => true, :uniqueness => true
 
+  after_create :set_external_id
+
   pg_search_scope :search_by_street, :against => [:title, :content], :ignoring => :accents
 
   scope :recent, -> { order(:created_at => :desc).limit(10) }
@@ -17,5 +19,9 @@ class Article < ApplicationRecord
 
   def extract_external_id
     url.scan(/\d+/).last
+  end
+
+  def set_external_id
+    self.external_id = extract_external_id
   end
 end
