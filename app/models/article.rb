@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   include PgSearch::Model
 
@@ -11,5 +13,9 @@ class Article < ApplicationRecord
 
   def self.mark_all_done
     update_all(:pending => false)
+  end
+
+  def extract_external_id
+    url.scan(/\d+/).last
   end
 end

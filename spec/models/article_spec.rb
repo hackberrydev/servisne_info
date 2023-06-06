@@ -105,4 +105,14 @@ RSpec.describe Article, :type => :model do
       expect(article.reload.pending?).to be(false)
     end
   end
+
+  describe "#extract_external_id" do
+    it "extracts external ID from the URL" do
+      article = described_class.new(
+        :url => "https://www.021.rs/story/Novi-Sad/Servisne-informacije/342832/Ulice-u-Petrovaradinu-Rumenki-i-Kacu-bez-vode.html"
+      )
+
+      expect(article.extract_external_id).to eq("342832")
+    end
+  end
 end
