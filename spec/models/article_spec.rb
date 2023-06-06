@@ -127,5 +127,13 @@ RSpec.describe Article, :type => :model do
 
       expect(article.extract_external_id).to eq("342832")
     end
+
+    it "correctly extracts external ID when the ID is not the last number in the URL" do
+      article = described_class.new(
+        :url => "https://www.021.rs/story/Novi-Sad/Servisne-informacije/293136/Iskljucenja-struje-za-sredu-22-decembar.html"
+      )
+
+      expect(article.extract_external_id).to eq("293136")
+    end
   end
 end
