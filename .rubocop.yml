@@ -1,0 +1,33 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/Documentation:
+  Enabled: false
+Style/EmptyCaseCondition:
+  Enabled: false
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+RSpec/InstanceVariable:
+  Enabled: false
+FactoryBot/SyntaxMethods:
+  Enabled: false
+Layout/LineLength:
+  Max: 80
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - staging
+    - development
+    - test
+Rails/I18nLocaleTexts:
+  Enabled: false
