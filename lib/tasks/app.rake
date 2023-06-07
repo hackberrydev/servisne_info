@@ -1,7 +1,7 @@
 namespace :app do
   desc "Scrape new articles"
-  task :scrape_articles => :environment do
-    logger = ActiveSupport::Logger.new(STDOUT)
+  task scrape_articles: :environment do
+    logger = ActiveSupport::Logger.new($stdout)
     scraper = Site021.new(logger)
     articles = scraper.scrape
 
@@ -10,20 +10,20 @@ namespace :app do
   end
 
   desc "Send pending articles"
-  task :send_pending_articles => :environment do
+  task send_pending_articles: :environment do
     SendArticles.new.call
   end
 
   desc "Send daily report"
-  task :send_daily_report => :environment do
+  task send_daily_report: :environment do
     Rails.application.credentials.admins.each do |email|
       AdminMailer.daily_report(email, Event.recent).deliver_now
     end
   end
 
   desc "Import users"
-  task :import_users => :environment do
-    users = eval(File.open(File.expand_path("users.rb")).read)
+  task import_users: :environment do
+    users = eval(File.read(File.expand_path("users.rb"))) # standard:disable Security/Eval
 
     users.each do |user_attributes|
       email = user_attributes[:email]
@@ -43,7 +43,7 @@ namespace :app do
   end
 
   desc "Backup users"
-  task :backup_users => :environment do
+  task backup_users: :environment do
     puts "Backup started..."
 
     bucket = Rails.application.credentials.backup_bucket!
@@ -52,25 +52,25 @@ namespace :app do
     secret_access_key = Rails.application.credentials.backup_secret_access_key!
 
     s3 = Aws::S3::Client.new(
-      :region            => region,
-      :access_key_id     => access_key_id,
-      :secret_access_key => secret_access_key
+      region: region,
+      access_key_id: access_key_id,
+      secret_access_key: secret_access_key
     )
     users = ::User.pluck(:email, :streets)
 
     s3.put_object(
-      :body => users.to_s,
-      :bucket => bucket,
-      :key => "users-#{Date.today.iso8601}.rb"
+      body: users.to_s,
+      bucket: bucket,
+      key: "users-#{Date.today.iso8601}.rb"
     )
 
     puts "Backup done."
   end
 
   desc "Scrape URL from the configuration file"
-  task :scrape_url => :environment do
+  task scrape_url: :environment do
     logger = Logger.new("log/url-scrapper.log")
-    scrapper =  ::UrlScrapper.new(
+    scrapper = ::UrlScrapper.new(
       Rails.application.credentials.scrape_url,
       Rails.application.credentials.scrape_params
     )

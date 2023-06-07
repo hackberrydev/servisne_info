@@ -15,8 +15,8 @@ RSpec.describe ArticleFactory do
     end
 
     it "doesn't save an article twice" do
-      article1 = FactoryBot.build(:article, :url => "example.com/article1")
-      article2 = FactoryBot.build(:article, :url => "example.com/article1")
+      article1 = FactoryBot.build(:article, url: "example.com/article1")
+      article2 = FactoryBot.build(:article, url: "example.com/article1")
 
       @factory.create([article1, article2])
 
@@ -34,7 +34,7 @@ RSpec.describe ArticleFactory do
     end
 
     it "doesn't save articles about 'Raspored sahrana'" do
-      article = FactoryBot.build(:article, :title => "Raspored sahrana za ponedeljak")
+      article = FactoryBot.build(:article, title: "Raspored sahrana za ponedeljak")
 
       @factory.create([article])
 

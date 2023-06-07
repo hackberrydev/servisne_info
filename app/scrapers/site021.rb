@@ -15,15 +15,15 @@ class Site021
 
   def build_article(article_html)
     article = Article.new(
-      :title => article_html.at(".articleTitle a").text.strip,
-      :url => article_html.at(".articleTitle a").attr("href").strip
+      title: article_html.at(".articleTitle a").text.strip,
+      url: article_html.at(".articleTitle a").attr("href").strip
     )
 
     page = mechanize.get(article.url)
     intro = page.at(".storyLead").text.strip
     paragraphs = page.search(".storyBody .innerBody div")
-                     .map { |p| p.text.strip }
-                     .select(&:present?)
+      .map { |p| p.text.strip }
+      .select(&:present?)
     body = remove_news_for_vilages(paragraphs).join
     article.content = intro + body
 
