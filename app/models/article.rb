@@ -18,7 +18,7 @@ class Article < ApplicationRecord
   end
 
   def extract_external_id
-    url.scan(/\d+/).last
+    url.split("/")[6]
   end
 
   def set_external_id
