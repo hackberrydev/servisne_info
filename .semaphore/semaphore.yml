@@ -10,7 +10,7 @@ blocks:
       secrets:
         - name: servisne-master-key
       jobs:
-        - name: RSpec
+        - name: Test and Audit
           commands:
             - sem-service start postgres
             - psql -U postgres -h localhost -c "CREATE USER developer WITH PASSWORD 'developer';"
@@ -22,6 +22,7 @@ blocks:
             - bin/rails spec
             - bin/brakeman
             - bin/bundle_audit
+            - bin/rails standard
 promotions:
   - name: Deploy
     pipeline_file: production-deploy.yml
