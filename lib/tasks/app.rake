@@ -61,7 +61,7 @@ namespace :app do
     s3.put_object(
       body: users.to_s,
       bucket: bucket,
-      key: "users-#{Date.today.iso8601}.rb"
+      key: "users-#{Time.zone.today.iso8601}.rb"
     )
 
     puts "Backup done."
