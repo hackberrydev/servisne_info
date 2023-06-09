@@ -1,4 +1,5 @@
 # This migration comes from active_storage (originally 20191206030411)
+# standard:disable all
 class CreateActiveStorageVariantRecords < ActiveRecord::Migration[6.0]
   def change
     return unless table_exists?(:active_storage_blobs)
@@ -26,3 +27,4 @@ class CreateActiveStorageVariantRecords < ActiveRecord::Migration[6.0]
     pkey_column.bigint? ? :bigint : pkey_column.type
   end
 end
+# standard:enable all
