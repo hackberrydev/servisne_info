@@ -5,7 +5,7 @@ class ArticleFactory
 
   def create(articles)
     filter(articles).each do |article|
-      if Article.exists?(url: article.url)
+      if article_exists?(article)
         @logger.warn "Skip article - #{article.url}"
       else
         @logger.info "Save article - #{article.url}"
@@ -21,5 +21,9 @@ class ArticleFactory
     articles.reject do |article|
       article.title.downcase.starts_with?("raspored sahrana")
     end
+  end
+
+  def article_exists?(article)
+    Article.exists?(url: article.url) || Article.exists?(external_id: article.external_id)
   end
 end
