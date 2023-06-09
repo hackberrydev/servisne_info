@@ -50,6 +50,11 @@ interaction:
         compose:
           run_options: [service-ports, use-aliases]
 
+  standard:
+    description: Run standardrb
+    service: rails
+    command: standardrb
+
   database:
     description: Open a Bash shell within a PostgreSQL container
     service: database
