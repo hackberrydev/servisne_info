@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   validates :title, :content, presence: true
   validates :url, presence: true, uniqueness: true
 
-  after_create :set_external_id
+  before_validation :set_external_id
 
   pg_search_scope :search_by_street, against: [:title, :content], ignoring: :accents
 
@@ -18,10 +18,14 @@ class Article < ApplicationRecord
   end
 
   def extract_external_id
+    return if url.blank?
+
     url.split("/")[6]
   end
 
   def set_external_id
+    return if external_id.present?
+
     self.external_id = extract_external_id
   end
 end
