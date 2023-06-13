@@ -24,6 +24,8 @@ class Article < ApplicationRecord
   end
 
   def set_external_id
+    return if external_id.present?
+
     self.external_id = extract_external_id
   end
 end
