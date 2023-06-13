@@ -43,7 +43,7 @@ RSpec.describe Article, type: :model do
           url: "https://www.021.rs/story/Novi-Sad/Servisne-informacije/342832/Ulice-u-Petrovaradinu-Rumenki-i-Kacu-bez-vode.html"
         )
 
-        expect(article.external_id).to eq("342832")
+        expect(article.reload.external_id).to eq("342832")
       end
     end
   end
