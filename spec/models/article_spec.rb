@@ -35,26 +35,14 @@ RSpec.describe Article, type: :model do
     end
   end
 
-  describe "callbacks" do
-    describe "after create" do
-      it "extracts external_id" do
-        article = FactoryBot.create(
-          :article,
-          url: "https://www.021.rs/story/Novi-Sad/Servisne-informacije/342832/Ulice-u-Petrovaradinu-Rumenki-i-Kacu-bez-vode.html"
-        )
+  describe "#url=" do
+    it "sets external_id" do
+      article = FactoryBot.build(
+        :article,
+        url: "https://www.021.rs/story/Novi-Sad/Servisne-informacije/342832/Ulice-u-Petrovaradinu-Rumenki-i-Kacu-bez-vode.html"
+      )
 
-        expect(article.reload.external_id).to eq("342832")
-      end
-
-      it "doesn't override external_id" do
-        article = FactoryBot.create(
-          :article,
-          external_id: "424242",
-          url: "https://www.021.rs/story/Novi-Sad/Servisne-informacije/342832/Ulice-u-Petrovaradinu-Rumenki-i-Kacu-bez-vode.html"
-        )
-
-        expect(article.reload.external_id).to eq("424242")
-      end
+      expect(article.external_id).to eq("342832")
     end
   end
 
