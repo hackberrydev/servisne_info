@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_050337) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_02_134645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_050337) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "pending", default: true
     t.string "external_id"
+    t.index ["url"], name: "index_articles_on_url", unique: true
   end
 
   create_table "events", force: :cascade do |t|
