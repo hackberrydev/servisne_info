@@ -1,2 +1,5 @@
 plugins:
   - standard-rails
+ignore:
+  - db/migrate/20180725152837_remove_sensitive_info_from_users.rb
+  - db/migrate/20200519191848_add_foreign_key_constraint_to_active_storage_attachments_for_blob_id.active_storage.rb

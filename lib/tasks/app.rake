@@ -6,7 +6,7 @@ namespace :app do
     articles = scraper.scrape
 
     factory = ArticleFactory.new(logger)
-    factory.create(articles)
+    factory.create(articles) # standard:disable Rails/SaveBang
   end
 
   desc "Send pending articles"

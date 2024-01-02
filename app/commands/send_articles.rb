@@ -1,6 +1,6 @@
 class SendArticles
   def call
-    puts "Sending articles"
+    Rails.logger.info "Sending articles"
 
     send_emails_to_users
     Article.mark_all_done
@@ -14,13 +14,13 @@ class SendArticles
       if articles.any?
         send_email_to_user(user, articles)
       else
-        puts "Skipping user #{user.id}"
+        Rails.logger.info "Skipping user #{user.id}"
       end
     end
   end
 
   def send_email_to_user(user, articles)
-    puts "Sending articles to user #{user.id}"
+    Rails.logger.info "Sending articles to user #{user.id}"
     UserMailer.new_articles(user, articles).deliver_now
 
     Event.create!(message: "Sent email to user #{user.email}")

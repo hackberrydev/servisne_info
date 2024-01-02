@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy!
 
     flash[:notice] = "User was succesfully deleted."
     redirect_to admin_users_path
