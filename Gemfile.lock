@@ -234,7 +234,7 @@ GEM
     net-ssh (7.1.0)
     nio4r (2.7.0)
     nkf (0.2.0)
-    nokogiri (1.16.0)
+    nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
