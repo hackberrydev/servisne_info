@@ -1,4 +1,0 @@
-0 * * * * RAILS_ENV=production bin/rails app:scrape_articles
-30 * * * * RAILS_ENV=production bin/rails app:send_pending_articles
-15 6 * * * RAILS_ENV=production bin/rails app:send_daily_report
-0 6 * * * RAILS_ENV=production bin/rails app:backup_users
