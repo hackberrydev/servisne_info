@@ -6,43 +6,65 @@ server name.
 Create user on the server:
 
 ```bash
-adduser servisne_info
+sudo adduser servisne_info
 ```
 
 Add the user to sudoers:
 
 ```bash
-usermod -aG sudo servisne_info
+sudo usermod -aG sudo servisne_info
 ```
 
-Add the public SSH key to `~/.ssh/authorized_keys`.
+Change the permissions of the user's home directory:
+
+```bash
+sudo chmod 755 /home/servisne_info
+```
+
+Add the public SSH key to `~/.ssh/authorized_keys` by executing:
+
+```bash
+ssh-copy-id servisne_info@server_name
+```
 
 Update the system:
 
 ```bash
-sudo apt-get update && sudo apt-get -y upgrade
+sudo apt update && sudo apt -y full-upgrade
 ```
 
-Install dependencies (git, ruby, nginx, passenger, etc.):
+Set the locale:
 
 ```bash
-sudo apt-get install -y ruby ruby-dev build-essential git nginx postgresql \
+sudo dpkg-reconfigure locales
+```
+
+Install dependencies (git, ruby, nginx, etc.):
+
+```bash
+sudo apt install -y cron ruby ruby-dev build-essential git nginx postgresql \
   postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev \
   libyaml-dev
 ```
 
-Install rbenv.
+Install [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build).
+
+**Note:** Configuration required for loading rbenv has to be placed in `~/.profile` instead of `~/.bashrc`:
+
+```bash
+echo 'eval "$(~/.rbenv/bin/rbenv init - bash)"' >> ~/.profile
+```
 
 Install the required version of Ruby:
 
 ```
-rbenv install 3.2.1
+rbenv install 3.2.2
 ```
 
 Install bundler:
 
 ```bash
-gem install bundler
+sudo gem install bundler
 ```
 
 Create PostgreSQL user:
@@ -56,6 +78,18 @@ Set the PostgreSQL user password:
 ```bash
 sudo -u postgres psql
 \password servisne_info
+```
+
+Create the new database:
+
+```bash
+CREATE DATABASE servisne_info_production;
+GRANT CONNECT, CREATE ON DATABASE servisne_info_production TO servisne_info;
+```
+
+Exit the PostgreSQL prompt:
+
+```bash
 \q
 ```
 
@@ -66,6 +100,19 @@ systemd):
 SERVISNE_INFO_DATABASE_PASSWORD="..."
 ```
 
+Create a dump of the database with:
+
+```bash
+pg_dump -U servisne_info -W -F p -f servisne_info_production.sql servisne_info_production
+```
+
+To restore a database dump, execute:
+
+```bash
+scp servisne_info_production.sql server_name:~
+psql -U servisne_info -d servisne_info_production -f servisne_info_production.sql
+```
+
 Copy `master.key` to the server:
 
 ```bash
@@ -74,18 +121,6 @@ scp config/master.key server_name:servisne_info/shared/config
 ```
 
 Put the new production server IP to `config/deploy/production.rb`.
-
-Deploy, from the development machine (it will fail):
-
-```bash
-bin/cap production deploy
-```
-
-Create database (on the server):
-
-```bash
-bin/rails db:create RAILS_ENV=production
-```
 
 Configure passwordless sudo - put following line to `/etc/sudoers` with
 `visudo`:
@@ -104,7 +139,7 @@ bin/cap production puma:nginx_config
 Add the following configuration to the Nginx configuration file:
 
 ```
-server_name *.servisne.info; # Replace the existing server_name directive.
+server_name www.servisne.info; # Replace the existing server_name directive.
 
 location @puma_servisne_info_production {
   proxy_pass http://puma_servisne_info_production;
@@ -135,19 +170,6 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
 ```
 
-To restore a database dump, execute:
-
-```bash
-scp servisne_info.dump server_name:~
-pg_restore --no-privileges --no-owner -d servisne_info_production servisne_info.dump
-```
-
-Deploy again:
-
-```bash
-bin/cap production deploy
-```
-
 Copy the following configuration to `/etc/systemd/system/puma_servisne_info_production.service`:
 
 ```bash
@@ -173,7 +195,7 @@ Enable the service:
 sudo systemctl enable puma_servisne_info_production.service
 ```
 
-Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
+Copy the following logrotate configuration to `/etc/logrotate.d/servisne_info`:
 
 ```
 /home/servisne_info/servisne_info/shared/log/*.log {
@@ -184,6 +206,12 @@ Copy the following logrotate configuration to /etc/logrotate.d/servisne_info:
   compress
   delaycompress
 }
+```
+
+Deploy:
+
+```bash
+bin/cap production deploy
 ```
 
 Install the SSL certificate using https://certbot.eff.org.
@@ -198,6 +226,7 @@ Then, reload SSH daemon - `sudo systemctl reload sshd`.
 Setup firewall:
 
 ```bash
+sudo apt install ufw
 sudo ufw allow OpenSSH
 sudo ufw allow http
 sudo ufw allow https
