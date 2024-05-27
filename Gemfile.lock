@@ -265,7 +265,7 @@ GEM
     popper_js (1.14.5)
     psych (5.1.2)
       stringio
-    public_suffix (5.0.4)
+    public_suffix (5.0.5)
     puma (5.6.8)
       nio4r (~> 2.0)
     racc (1.7.3)
@@ -427,7 +427,7 @@ GEM
     vcr (6.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.22.0)
+    webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
