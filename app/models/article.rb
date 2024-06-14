@@ -16,7 +16,7 @@ class Article < ApplicationRecord
   end
 
   def url=(value)
-    super(value)
+    super
 
     self.external_id = extract_external_id
   end
