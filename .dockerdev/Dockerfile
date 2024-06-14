@@ -42,6 +42,8 @@ RUN gem update --system && \
 RUN mkdir -p /app
 WORKDIR /app
 
+RUN echo $RUBY_VERSION > /app/.ruby-version
+
 EXPOSE 3000
 
 CMD ["/usr/bin/bash"]
