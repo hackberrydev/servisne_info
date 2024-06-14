@@ -16,6 +16,7 @@ blocks:
             - psql -U postgres -h localhost -c "CREATE USER developer WITH PASSWORD 'developer';"
             - psql -U postgres -h localhost -c "ALTER USER developer WITH SUPERUSER;"
             - checkout
+            - echo "3.3.2" > .ruby-version
             - cp config/database.yml.semaphore2 config/database.yml
             - bundle install --deployment --path .bundle
             - 'bin/rails db:create db:schema:load'
