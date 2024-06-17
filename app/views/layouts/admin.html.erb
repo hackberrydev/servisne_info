@@ -12,7 +12,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      
+
     <%= csrf_meta_tags %>
   </head>
   <body class="admin">
@@ -23,7 +23,11 @@
         <div class="row">
           <div class="col-md-12 main-content">
             <%= render "layouts/flash" %>
-            
+
+            <div class="alert alert-info" role="alert">
+              <div>Ruby Version: <%= RUBY_VERSION %></div>
+            </div>
+
             <%= yield %>
           </div>
         </div>
