@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 7.1.0"
 
 gem "aws-sdk-s3", "~> 1.60"
-gem "bootstrap", "~> 4.3.1"
+gem "bootstrap", "~> 4.3"
 gem "devise"
 gem "jquery-rails"
 gem "kaminari"
