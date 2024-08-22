@@ -1,6 +1,6 @@
 if Rails.env.production?
-  Raven.configure do |config|
+  Sentry.init do |config|
     config.dsn = Rails.application.credentials.sentry_dsn
-    config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
+    config.send_default_pii = false
   end
 end
