@@ -4,6 +4,17 @@
 
 Rails project running [Servisne Info](https://www.servisne.info/).
 
+## Development
+
+Run the following commands to set up your development environment:
+
+```bash
+dip provision
+dip bundle install
+dip rails db:create db:schema:load
+dip rails spec
+```
+
 ## Contributing
 
 Do you want to contribute to the project? Great! Before writing any code, please
