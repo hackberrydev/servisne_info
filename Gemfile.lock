@@ -373,6 +373,14 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sentry-rails (5.19.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.19.0)
@@ -473,6 +481,7 @@ DEPENDENCIES
   rails (~> 7.1.0)
   rspec-rails
   sass-rails (~> 5.0)
+  sassc-rails
   sentry-rails
   sentry-ruby
   sentry-sidekiq
