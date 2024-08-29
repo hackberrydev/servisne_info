@@ -26,7 +26,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     libyaml-dev \
     nodejs \
     postgresql \
-    postgresql-contrib
+    postgresql-contrib \
+    vim
 
 ENV LANG=C.UTF-8 \
   BUNDLE_JOBS=4 \

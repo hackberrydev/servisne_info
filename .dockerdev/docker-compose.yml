@@ -6,6 +6,7 @@ x-app: &app
   image: servisne_info:1.0.0
   environment: &env
     RAILS_ENV: ${RAILS_ENV:-development}
+    THOR_MERGE: vimdiff
   tmpfs:
     - /tmp
     - /app/tmp/pids
