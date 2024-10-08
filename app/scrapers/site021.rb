@@ -23,7 +23,7 @@ class Site021
     intro = page.at(".storyLead").text.strip
     paragraphs = page.search(".storyBody .innerBody div")
       .map { |p| p.text.strip }
-      .select(&:present?)
+      .compact_blank
     body = remove_news_for_vilages(paragraphs).join
     article.content = intro + body
 
