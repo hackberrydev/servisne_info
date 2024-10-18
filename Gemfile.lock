@@ -404,7 +404,7 @@ GEM
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
-    standard (1.41.0)
+    standard (1.41.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.66.0)
