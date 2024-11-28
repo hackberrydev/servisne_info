@@ -139,7 +139,7 @@ bin/cap production puma:nginx_config
 Add the following configuration to the Nginx configuration file:
 
 ```
-server_name www.servisne.info; # Replace the existing server_name directive.
+server_name servisne.info; # Replace the existing server_name directive.
 
 location @puma_servisne_info_production {
   proxy_pass http://puma_servisne_info_production;
@@ -214,7 +214,8 @@ Deploy:
 bin/cap production deploy
 ```
 
-Install the SSL certificate using https://certbot.eff.org.
+Install the SSL certificate using https://certbot.eff.org for both
+`servisne.info` and `www.servisne.info`.
 
 ### Security
 
