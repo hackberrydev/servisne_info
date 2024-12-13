@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe ArticleFactory do
   describe "#create" do
     before do
-      @factory = ArticleFactory.new(ActiveSupport::Logger.new("/dev/null"))
+      @factory = ArticleFactory.new(ActiveSupport::Logger.new(File::NULL))
     end
 
     it "saves articles to database" do
