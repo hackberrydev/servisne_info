@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   include PgSearch::Model
 
   validates :title, :content, presence: true
-  validates :url, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: {scope: :town}
 
   pg_search_scope :search_by_street, against: [:title, :content], ignoring: :accents
 

@@ -26,12 +26,20 @@ RSpec.describe Article, type: :model do
     end
 
     it "must have unique url" do
-      FactoryBot.create(:article, url: "example.com/article1")
+      FactoryBot.create(:article, url: "example.com/article1", town: "novi sad")
 
-      article = FactoryBot.build(:article, url: "example.com/article1")
+      article = FactoryBot.build(:article, url: "example.com/article1", town: "novi sad")
 
       expect(article).not_to be_valid
       expect(article.errors[:url]).to be_present
+    end
+
+    it "allows the same url if towns are different" do
+      FactoryBot.create(:article, url: "example.com/article1", town: "novi sad")
+
+      article = FactoryBot.build(:article, url: "example.com/article1", town: "rakovac")
+
+      expect(article).to be_valid
     end
   end
 
