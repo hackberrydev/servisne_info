@@ -16,7 +16,8 @@ class Site021
   def build_article(article_html)
     article = Article.new(
       title: article_html.at(".articleTitle a").text.strip,
-      url: article_html.at(".articleTitle a").attr("href").strip
+      url: article_html.at(".articleTitle a").attr("href").strip,
+      town: "novi sad"
     )
 
     page = mechanize.get(article.url)

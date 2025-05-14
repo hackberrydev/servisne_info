@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_02_134645) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_14_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -23,7 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_134645) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "pending", default: true
     t.string "external_id"
-    t.index ["url"], name: "index_articles_on_url", unique: true
+    t.string "town"
+    t.index ["url", "town"], name: "index_articles_on_url_and_town", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -46,5 +47,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_02_134645) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end
