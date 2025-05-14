@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:streets])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:streets, towns: []])
   end
 
   def configure_account_update_params
