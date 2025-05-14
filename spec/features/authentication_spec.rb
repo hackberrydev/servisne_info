@@ -6,6 +6,8 @@ feature "Authentication" do
   scenario "A visitor creates an account" do
     sign_up("john@example.com", "pass123", "Baker street", "Dunav")
     expect(page).to have_content("Uspešno ste se prijаvili.")
+
+    expect(User.last.towns).to eq(["novi sad"])
   end
 
   scenario "A visitor tries to create an account with a wrong captcha answer" do
