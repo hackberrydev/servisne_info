@@ -41,6 +41,13 @@ RSpec.describe Article, type: :model do
 
       expect(article).to be_valid
     end
+
+    it "must have town" do
+      article = FactoryBot.build(:article, town: nil)
+
+      expect(article).not_to be_valid
+      expect(article.errors[:town]).to be_present
+    end
   end
 
   describe "#url=" do
