@@ -11,6 +11,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "callbacks" do
+    describe "before validate" do
+      it "transforms towns to be all lower letter" do
+        user = FactoryBot.build_stubbed(:user)
+        user.towns = ["Novi Sad", "Belgrade"]
+
+        user.validate
+
+        expect(user.towns).to match_array(["novi sad", "belgrade"])
+      end
+    end
+  end
+
   describe "#make_admin" do
     it "promotes the user to admin" do
       user = FactoryBot.create(:user)
