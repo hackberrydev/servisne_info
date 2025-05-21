@@ -42,4 +42,54 @@ RSpec.describe User, type: :model do
       expect(user.streets_array).to eq(["Banovic Strahinje", "Bulevar", "Liman"])
     end
   end
+
+  describe "#search_pending_articles" do
+    before do
+      @user = FactoryBot.create(:user, streets: "Banovic Strahinje", towns: ["novi sad"])
+    end
+
+    it "returns pending articles with matching street and town" do
+      article = FactoryBot.create(
+        :article,
+        :pending,
+        title: "No water in Banovic Strahinje",
+        town: "novi sad"
+      )
+
+      expect(@user.search_pending_articles).to include(article)
+    end
+
+    it "doesn't return articles that are not pending" do
+      article = FactoryBot.create(
+        :article,
+        :sent,
+        title: "No water in Banovic Strahinje",
+        town: "novi sad"
+      )
+
+      expect(@user.search_pending_articles).not_to include(article)
+    end
+
+    it "doesn't return articles where streets don't match" do
+      article = FactoryBot.create(
+        :article,
+        :pending,
+        title: "No water in Bulevar cara Lazara",
+        town: "novi sad"
+      )
+
+      expect(@user.search_pending_articles).not_to include(article)
+    end
+
+    it "doesn't return articles where town doesn't match" do
+      article = FactoryBot.create(
+        :article,
+        :pending,
+        title: "No water in Banovic Strahinje",
+        town: "subotica"
+      )
+
+      expect(@user.search_pending_articles).not_to include(article)
+    end
+  end
 end

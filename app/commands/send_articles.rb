@@ -10,7 +10,8 @@ class SendArticles
 
   def send_emails_to_users
     User.find_each do |user|
-      articles = user_articles(user)
+      articles = user.search_pending_articles
+
       if articles.any?
         send_email_to_user(user, articles)
       else
@@ -24,11 +25,5 @@ class SendArticles
     UserMailer.new_articles(user, articles).deliver_now
 
     Event.create!(message: "Sent email to user #{user.email}")
-  end
-
-  def user_articles(user)
-    user.streets_array
-      .flat_map { |street| Article.pending.search_by_street(street) }
-      .uniq
   end
 end

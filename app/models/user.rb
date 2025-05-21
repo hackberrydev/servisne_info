@@ -18,6 +18,12 @@ class User < ApplicationRecord
     streets.split(",").map(&:strip)
   end
 
+  def search_pending_articles
+    streets_array
+      .flat_map { Article.pending.where(town: towns).search_by_street(it) }
+      .uniq
+  end
+
   private
 
   def downcase_towns
