@@ -156,13 +156,6 @@ location @servisne_info_puma_production {
 
 Disable paswordless sudo!
 
-Enable restarting Puma without a password, by adding the following line to
-`/etc/sudoers`:
-
-```bash
-servisne_info ALL=(ALL) NOPASSWD: /bin/systemctl restart servisne_info_puma_production
-```
-
 Remove default Nginx site:
 
 ```bash
