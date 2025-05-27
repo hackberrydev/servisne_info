@@ -141,8 +141,8 @@ Add the following configuration to the Nginx configuration file:
 ```
 server_name servisne.info; # Replace the existing server_name directive.
 
-location @puma_servisne_info_production {
-  proxy_pass http://puma_servisne_info_production;
+location @servisne_info_puma_production {
+  proxy_pass http://servisne_info_puma_production;
   proxy_set_header  Host $host;
   proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
   proxy_set_header  X-Forwarded-Proto $scheme;
@@ -156,13 +156,6 @@ location @puma_servisne_info_production {
 
 Disable paswordless sudo!
 
-Enable restarting Puma without a password, by adding the following line to
-`/etc/sudoers`:
-
-```bash
-servisne_info ALL=(ALL) NOPASSWD: /bin/systemctl restart puma_servisne_info_production
-```
-
 Remove default Nginx site:
 
 ```bash
@@ -170,7 +163,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
 ```
 
-Copy the following configuration to `/etc/systemd/system/puma_servisne_info_production.service`:
+Copy the following configuration to `/home/servisne_info/.config/systemd/user/servisne_info_puma_production.service`:
 
 ```bash
 [Unit]
@@ -192,7 +185,7 @@ WantedBy=multi-user.target
 Enable the service:
 
 ```bash
-sudo systemctl enable puma_servisne_info_production.service
+sudo systemctl enable --user servisne_info_puma_production.service
 ```
 
 Copy the following logrotate configuration to `/etc/logrotate.d/servisne_info`:
