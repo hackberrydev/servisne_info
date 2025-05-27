@@ -163,7 +163,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
 ```
 
-Copy the following configuration to `/etc/systemd/system/servisne_info_puma_production.service`:
+Copy the following configuration to `/home/servisne_info/.config/systemd/user/servisne_info_puma_production.service`:
 
 ```bash
 [Unit]
@@ -185,7 +185,7 @@ WantedBy=multi-user.target
 Enable the service:
 
 ```bash
-sudo systemctl enable servisne_info_puma_production.service
+sudo systemctl enable --user servisne_info_puma_production.service
 ```
 
 Copy the following logrotate configuration to `/etc/logrotate.d/servisne_info`:
