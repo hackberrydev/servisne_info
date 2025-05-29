@@ -171,21 +171,26 @@ Description=Servisne Info Server
 
 [Service]
 Type=simple
-User=servisne_info
-Group=servisne_info
 WorkingDirectory=/home/servisne_info/servisne_info/current
 EnvironmentFile=/home/servisne_info/servisne_info.env
 ExecStart=/bin/bash -lc 'bundle exec puma -C /home/servisne_info/servisne_info/shared/puma.rb'
 Restart=always
+RestartSec=10s
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
 Enable the service:
 
 ```bash
-sudo systemctl enable --user servisne_info_puma_production.service
+systemctl enable --user servisne_info_puma_production.service
+```
+
+Allow persistent user services:
+
+```bash
+sudo loginctl enable-linger servisne_info
 ```
 
 Copy the following logrotate configuration to `/etc/logrotate.d/servisne_info`:
