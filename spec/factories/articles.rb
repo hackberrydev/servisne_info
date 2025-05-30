@@ -5,5 +5,13 @@ FactoryBot.define do
     content { "MyText" }
     title { "MyString" }
     town { "novi sad" }
+
+    trait :pending do
+      pending { true }
+    end
+
+    trait :sent do
+      pending { false }
+    end
   end
 end

@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe SendArticles do
   before do
-    @user = FactoryBot.create(:user, streets: "Banovic Strahinje")
+    @user = FactoryBot.create(:user, streets: "Banovic Strahinje", towns: ["novi sad"])
 
-    @article1 = FactoryBot.create(:article, title: "No water in Banovic Strahinje", pending: true)
-    @article2 = FactoryBot.create(:article, title: "No water in Narodnog fronta", pending: true)
-    @article3 = FactoryBot.create(:article, title: "No water in Banovic Strahinje", pending: false)
+    @article1 = FactoryBot.create(:article, title: "No water in Banovic Strahinje", town: "novi sad", pending: true)
+    @article2 = FactoryBot.create(:article, title: "No water in Narodnog fronta", town: "novi sad", pending: true)
+    @article3 = FactoryBot.create(:article, title: "No water in Banovic Strahinje", town: "novi sad", pending: false)
   end
 
   it "sends matching pending articles to users" do
@@ -17,6 +17,14 @@ RSpec.describe SendArticles do
     send_articles = SendArticles.new
 
     send_articles.call
+  end
+
+  it "doesn't send articles where the down doesn't match to users" do
+    @user.update!(towns: ["belgrade"])
+
+    expect(UserMailer).not_to receive(:new_articles)
+
+    SendArticles.new.call
   end
 
   it "marks articles as done" do
