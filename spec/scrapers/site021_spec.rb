@@ -8,11 +8,11 @@ RSpec.describe Site021, :vcr do
   end
 
   it "scrapes articles from 021.rs" do
-    expect(@articles.count).to eq(20)
+    expect(@articles.count).to eq(21)
   end
 
   it "scrapes content for articles" do
-    article = @articles[4]
+    article = @articles[5]
     expect(article.title).to eq("Isključenja struje za četvrtak, 24. jun")
     expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/277402/Iskljucenja-struje-za-cetvrtak-24-jun.html")
     expect(article.content).to match(/Delovi Novog Sada i Rakovca u četvrtak, 24. juna neće imati struje./)
@@ -20,8 +20,9 @@ RSpec.describe Site021, :vcr do
     expect(article.town).to eq("novi sad")
   end
 
-  it "doesn't include scrape content that's not from Novi Sad" do
+  it "scrapes articles for towns other than Novi Sad" do
     article = @articles[4]
-    expect(article.content).not_to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
+    expect(article.town).to match("rakovac")
+    expect(article.content).to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
   end
 end
