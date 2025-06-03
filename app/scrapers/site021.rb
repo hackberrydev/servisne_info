@@ -57,12 +57,6 @@ class Site021
     end
   end
 
-  def remove_news_for_vilages(news)
-    return news unless news.first == "NOVI SAD"
-
-    news.drop(1).take_while { |n| n.upcase != n }
-  end
-
   def mechanize
     @mechanize ||= Mechanize.new do |mechanize|
       mechanize.max_history = 0
