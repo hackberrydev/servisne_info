@@ -21,7 +21,7 @@ RSpec.describe ArticleFactory do
 
       event = Event.last
 
-      expect(event.message).to eq("New article - #{article.url}")
+      expect(event.message).to eq(%(New article for "novi sad" - #{article.url}))
     end
 
     it "doesn't save an article twice" do
