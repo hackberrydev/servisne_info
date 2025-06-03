@@ -45,9 +45,9 @@ class Site021
       return {"novi sad" => paragraphs.drop(1)}
     end
 
-    title = "novi sad"
+    title = nil
 
-    paragraphs.each_with_object({"novi sad" => []}) do |paragraph, per_town|
+    paragraphs.each_with_object({}) do |paragraph, per_town|
       if paragraph.upcase == paragraph
         title = paragraph.downcase
         per_town[title] = []
