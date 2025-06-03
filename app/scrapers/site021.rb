@@ -26,9 +26,7 @@ class Site021
       .map { |p| p.text.strip }
       .compact_blank
 
-    result = paragraphs_per_town(paragraphs)
-
-    articles = result.map do |town, paragraphs|
+    articles = paragraphs_per_town(paragraphs).map do |town, paragraphs|
       Article.new(
         content: intro + paragraphs.join,
         title: title,
