@@ -6,37 +6,55 @@ class Site021
   def scrape
     @logger.info "Scrape site - 021.rs"
     page = mechanize.get("https://www.021.rs/Novi-Sad/Servisne-informacije/6")
-    page.search("main article").map do |article_html|
-      build_article(article_html)
-    end
+
+    page
+      .search("main article")
+      .flat_map { |article_html| build_articles(article_html) }
   end
 
   private
 
-  def build_article(article_html)
-    article = Article.new(
-      title: article_html.at(".articleTitle a").text.strip,
-      url: article_html.at(".articleTitle a").attr("href").strip,
-      town: "novi sad"
-    )
+  def build_articles(article_html)
+    url = article_html.at(".articleTitle a").attr("href").strip
+    title = article_html.at(".articleTitle a").text.strip
 
-    page = mechanize.get(article.url)
+    page = mechanize.get(url)
     intro = page.at(".storyLead").text.strip
-    paragraphs = page.search(".storyBody .innerBody div")
+
+    paragraphs = page
+      .search(".storyBody .innerBody div")
       .map { |p| p.text.strip }
       .compact_blank
-    body = remove_news_for_vilages(paragraphs).join
-    article.content = intro + body
 
-    @logger.info "Scrape article - #{article.url}"
+    articles = paragraphs_per_town(paragraphs).map do |town, paragraphs|
+      Article.new(
+        content: intro + paragraphs.join,
+        title: title,
+        town: town,
+        url: url
+      )
+    end
 
-    article
+    @logger.info "Scrape article - #{url}"
+
+    articles
   end
 
-  def remove_news_for_vilages(news)
-    return news unless news.first == "NOVI SAD"
+  def paragraphs_per_town(paragraphs)
+    unless paragraphs.first == "NOVI SAD"
+      return {"novi sad" => paragraphs.drop(1)}
+    end
 
-    news.drop(1).take_while { |n| n.upcase != n }
+    title = nil
+
+    paragraphs.each_with_object({}) do |paragraph, per_town|
+      if paragraph.upcase == paragraph
+        title = paragraph.downcase
+        per_town[title] = []
+      else
+        per_town[title] << paragraph
+      end
+    end
   end
 
   def mechanize

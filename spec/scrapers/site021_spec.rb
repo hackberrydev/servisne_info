@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Site021, :vcr do
+RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_rs"} do
   before do
     scraper = Site021.new(ActiveSupport::Logger.new(File::NULL))
 
@@ -8,7 +8,7 @@ RSpec.describe Site021, :vcr do
   end
 
   it "scrapes articles from 021.rs" do
-    expect(@articles.count).to eq(20)
+    expect(@articles.count).to eq(36)
   end
 
   it "scrapes content for articles" do
@@ -20,8 +20,9 @@ RSpec.describe Site021, :vcr do
     expect(article.town).to eq("novi sad")
   end
 
-  it "doesn't include scrape content that's not from Novi Sad" do
-    article = @articles[4]
-    expect(article.content).not_to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
+  it "scrapes articles for towns other than Novi Sad" do
+    article = @articles[5]
+    expect(article.town).to match("rakovac")
+    expect(article.content).to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
   end
 end
