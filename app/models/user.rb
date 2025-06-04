@@ -2,6 +2,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  AVAILABLE_TOWNS = [
+    "kać",
+    "ledinci",
+    "novi sad",
+    "rakovac"
+  ].freeze
+
   paginates_per 50
 
   validates :streets, presence: true
