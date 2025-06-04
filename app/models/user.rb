@@ -12,6 +12,7 @@ class User < ApplicationRecord
   paginates_per 50
 
   validates :streets, presence: true
+  validates :towns, inclusion: {in: AVAILABLE_TOWNS}
 
   before_validation :downcase_towns
 

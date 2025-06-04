@@ -20,7 +20,7 @@ RSpec.describe SendArticles do
   end
 
   it "doesn't send articles where the down doesn't match to users" do
-    @user.update!(towns: ["belgrade"])
+    @user.update!(towns: ["ledinci"])
 
     expect(UserMailer).not_to receive(:new_articles)
 

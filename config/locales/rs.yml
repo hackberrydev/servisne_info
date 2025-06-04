@@ -21,10 +21,11 @@ rs:
   activerecord:
     attributes:
       user:
-        streets: "Ulice"
-        password: "Lozinka"
-        password_confirmation: "Potvrda lozinke"
         current_password: "Trenutna lozinka"
+        password_confirmation: "Potvrda lozinke"
+        password: "Lozinka"
+        streets: "Ulice"
+        towns: "Naselja"
     errors:
       models:
         user:
@@ -33,6 +34,8 @@ rs:
               too_short: "je suviše kratka"
             email:
               taken: "je već zauzet"
+            towns:
+              inclusion: "sadrže opciju koja nije validna"
       messages:
         blank: "je obavezno polje"
         confirmation: "se ne poklapa"
