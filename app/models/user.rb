@@ -35,6 +35,8 @@ class User < ApplicationRecord
   private
 
   def downcase_towns
-    self.towns = towns.map(&:downcase) if towns.present?
+    return if towns.blank?
+
+    self.towns = towns.map(&:downcase).compact_blank
   end
 end
