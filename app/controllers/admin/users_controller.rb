@@ -16,7 +16,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    if @user.update(streets: params[:user][:streets])
+    if @user.update(user_params)
       flash[:notice] = "User was succesfully saved."
       redirect_to admin_users_path
     else
@@ -28,5 +28,9 @@ class Admin::UsersController < Admin::ApplicationController
 
   def find_user
     @user = ::User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:streets, towns: [])
   end
 end

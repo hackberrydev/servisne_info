@@ -6,6 +6,7 @@
       <th scope="col">ID</th>
       <th scope="col">Email</th>
       <th scope="col">Streets</th>
+      <th scope="col">Towns</th>
       <th scope="col">Created At</th>
       <th scope="col"></th>
     </tr>
@@ -16,6 +17,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.streets %></td>
+        <td><%= user.towns.join(", ") %></td>
         <td><%= user.created_at.to_date %></td>
         <td class="text-right">
           <%= edit_user_link(user) %>
