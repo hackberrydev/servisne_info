@@ -2,9 +2,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  AVAILABLE_TOWNS = [
+    "kać",
+    "ledinci",
+    "novi sad",
+    "rakovac"
+  ].freeze
+
   paginates_per 50
 
   validates :streets, presence: true
+  validates :towns, inclusion: {in: AVAILABLE_TOWNS}
 
   before_validation :downcase_towns
 
@@ -27,6 +35,8 @@ class User < ApplicationRecord
   private
 
   def downcase_towns
-    self.towns = towns.map(&:downcase) if towns.present?
+    return if towns.blank?
+
+    self.towns = towns.map(&:downcase).compact_blank
   end
 end

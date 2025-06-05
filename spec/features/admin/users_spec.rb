@@ -36,11 +36,14 @@ feature "Users admin" do
     end
 
     fill_in "Streets", with: "Bulevar"
+    check "kać"
+    check "novi sad"
     click_button "Save"
 
     expect(page).to have_content("User was succesfully saved.")
     within "#user_#{@user.id}" do
       expect(page).to have_content("Bulevar")
+      expect(page).to have_content("kać, novi sad")
     end
   end
 

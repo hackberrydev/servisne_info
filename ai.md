@@ -12,3 +12,9 @@ More information about deployment settings can be found in ./DEPLOYMENT.md.
 ## Code Style
 
 Follow the code style proposed by the Standard Ruby project.
+
+## Development
+
+Use `dip` for all Rails related commands. For example, instead of `bin/rails
+spec` or `bundle exec rails spec`, use `dip rails spec`. Instead of `rspec`
+or `bin/rspec`, use `dip rspec`.

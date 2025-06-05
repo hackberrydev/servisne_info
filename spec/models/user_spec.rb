@@ -9,6 +9,19 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to be_falsy
       expect(user.errors[:streets]).to be_present
     end
+
+    it "allows only available towns" do
+      user = FactoryBot.build(:user, towns: User::AVAILABLE_TOWNS)
+
+      expect(user).to be_valid
+    end
+
+    it "is invalid when towns include entries not in AVAILABLE_TOWNS" do
+      user = FactoryBot.build(:user, towns: ["invalid town"])
+      user.valid?
+
+      expect(user.errors[:towns]).to include("sadrže opciju koja nije validna")
+    end
   end
 
   describe "callbacks" do

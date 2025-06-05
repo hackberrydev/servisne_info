@@ -10,11 +10,15 @@ feature "Update account" do
     visit edit_user_registration_path
     fill_in "Email", with: "my_new@example.com"
     fill_in "Ulice", with: "My new street"
+    check "kać"
+    check "novi sad"
     fill_in "Trenutna lozinka", with: "pass123"
     click_button "Sačuvaj"
 
     expect(page).to have_content("Uspešno ste аžurirаli svoj nаlog.")
     expect(page).to have_field("Email", with: "my_new@example.com")
     expect(page).to have_field("Ulice", with: "My new street")
+    expect(page).to have_checked_field("kać")
+    expect(page).to have_checked_field("novi sad")
   end
 end

@@ -19,6 +19,17 @@
         <%= f.label :streets %>
         <%= f.text_field :streets, :class => "form-control" %>
       </div>
+      <div class="form-group">
+        <%= f.label :towns %>
+        <div>
+          <%= f.collection_check_boxes :towns, User::AVAILABLE_TOWNS, :to_s, :to_s do |b| %>
+            <div class="form-check form-check-inline">
+              <%= b.check_box(class: "form-check-input") %>
+              <%= b.label(class: "form-check-label") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
       <div class="form-group">
         <%= f.label :password %>

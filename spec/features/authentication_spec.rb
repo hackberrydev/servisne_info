@@ -4,10 +4,10 @@ feature "Authentication" do
   include AuthenticationHelpers
 
   scenario "A visitor creates an account" do
-    sign_up("john@example.com", "pass123", "Baker street", "Dunav")
+    sign_up("john@example.com", "pass123", "Baker street", "Dunav", ["kać", "novi sad"])
     expect(page).to have_content("Uspešno ste se prijаvili.")
 
-    expect(User.last.towns).to eq(["novi sad"])
+    expect(User.last.towns).to eq(["kać", "novi sad"])
   end
 
   scenario "A visitor tries to create an account with a wrong captcha answer" do
