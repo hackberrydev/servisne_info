@@ -37,7 +37,7 @@
 
   <div class="form-group">
     <%= label_tag :captcha_answer, Rails.application.credentials.captcha_question %>
-    <%= text_field_tag :captcha_answer, "", :class => "form-control" %>
+    <%= text_field_tag :captcha_answer, "", class: "form-control", autocomplete: "off" %>
     <div class="form-text">Sigurnosno pitanje.</div>
   </div>
 
