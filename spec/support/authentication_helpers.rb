@@ -1,5 +1,5 @@
 module AuthenticationHelpers
-  def sign_up(email, password, streets, captcha_answer)
+  def sign_up(email, password, streets, captcha_answer, towns = [])
     visit root_path
     find("nav").click_link("Registruj se")
     fill_in "Email", with: email
@@ -7,6 +7,7 @@ module AuthenticationHelpers
     fill_in "Potvrda lozinke", with: password
     fill_in "Ulice", with: streets
     fill_in "captcha_answer", with: captcha_answer
+    towns.each { |town| check town }
     click_button "Registruj se"
   end
 
