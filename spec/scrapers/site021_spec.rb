@@ -1,18 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_rs"} do
-  before do
-    scraper = Site021.new(ActiveSupport::Logger.new(File::NULL))
-
-    @articles = scraper.scrape
-  end
+  let(:scraper) { Site021.new(ActiveSupport::Logger.new(File::NULL)) }
+  let(:articles) { scraper.scrape }
 
   it "scrapes articles from 021.rs" do
-    expect(@articles.count).to eq(36)
+    expect(articles.count).to eq(36)
   end
 
   it "scrapes content for articles" do
-    article = @articles[4]
+    article = articles[4]
     expect(article.title).to eq("Isključenja struje za četvrtak, 24. jun")
     expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/277402/Iskljucenja-struje-za-cetvrtak-24-jun.html")
     expect(article.content).to match(/Delovi Novog Sada i Rakovca u četvrtak, 24. juna neće imati struje./)
@@ -21,8 +18,14 @@ RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_
   end
 
   it "scrapes articles for towns other than Novi Sad" do
-    article = @articles[5]
+    article = articles[5]
     expect(article.town).to match("rakovac")
     expect(article.content).to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
+  end
+
+  it "doesn't scrape articles if articles have already been scrapped", vcr: {allow_playback_repeats: true} do
+    articles.map(&:save!)
+
+    expect(scraper.scrape).to be_empty
   end
 end

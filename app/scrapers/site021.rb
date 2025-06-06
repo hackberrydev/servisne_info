@@ -18,6 +18,8 @@ class Site021
     url = article_html.at(".articleTitle a").attr("href").strip
     title = article_html.at(".articleTitle a").text.strip
 
+    return [] if Article.exists?(url: url)
+
     page = mechanize.get(url)
     intro = page.at(".storyLead").text.strip
 
