@@ -18,7 +18,12 @@ class Site021
     url = article_html.at(".articleTitle a").attr("href").strip
     title = article_html.at(".articleTitle a").text.strip
 
-    return [] if Article.exists?(url: url)
+    if Article.exists?(url: url)
+      @logger.info "Skip article - #{url}"
+      return []
+    else
+      @logger.info "Scrape article - #{url}"
+    end
 
     page = mechanize.get(url)
     intro = page.at(".storyLead").text.strip
@@ -28,7 +33,9 @@ class Site021
       .map { |p| p.text.strip }
       .compact_blank
 
-    articles = paragraphs_per_town(paragraphs).map do |town, paragraphs|
+    paragraphs_per_town = paragraphs_per_town(paragraphs, towns_in_title(title))
+
+    paragraphs_per_town.map do |town, paragraphs|
       Article.new(
         content: intro + paragraphs.join,
         title: title,
@@ -36,15 +43,11 @@ class Site021
         url: url
       )
     end
-
-    @logger.info "Scrape article - #{url}"
-
-    articles
   end
 
-  def paragraphs_per_town(paragraphs)
+  def paragraphs_per_town(paragraphs, towns)
     unless paragraphs.first == "NOVI SAD"
-      return {"novi sad" => paragraphs.drop(1)}
+      return towns.map { [it, paragraphs] }.to_h
     end
 
     title = nil
@@ -57,6 +60,12 @@ class Site021
         per_town[title] << paragraph
       end
     end
+  end
+
+  def towns_in_title(title)
+    towns = User::AVAILABLE_TOWNS.select { title.downcase.include?(it) }
+
+    towns.empty? ? ["novi sad"] : towns
   end
 
   def mechanize
