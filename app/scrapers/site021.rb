@@ -47,7 +47,7 @@ class Site021
 
   def paragraphs_per_town(paragraphs, towns)
     unless paragraphs.first == "NOVI SAD"
-      return towns.map { [it, paragraphs.drop(1)] }.to_h
+      return towns.map { [it, paragraphs] }.to_h
     end
 
     title = nil
