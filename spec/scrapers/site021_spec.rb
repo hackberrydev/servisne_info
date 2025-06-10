@@ -28,4 +28,11 @@ RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_
 
     expect(scraper.scrape).to be_empty
   end
+
+  it "scrapes articles for different towns when they are mentioned only in title", vcr: {cassette_name: "Site021/different_towns"} do
+    no_gas_articles = articles.slice(16..18)
+
+    expect(no_gas_articles.map(&:town)).to match_array(["kać", "budisava", "kovilj"])
+    expect(no_gas_articles.map(&:url).uniq).to match_array(["https://www.021.rs/story/Novi-Sad/Servisne-informacije/411959/Da-znate-na-vreme-Kac-Budisava-i-Kovilj-od-7-do-11-jula-bez-gasa.html"])
+  end
 end
