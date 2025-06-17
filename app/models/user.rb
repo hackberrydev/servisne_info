@@ -8,7 +8,9 @@ class User < ApplicationRecord
     "kovilj",
     "ledinci",
     "novi sad",
-    "rakovac"
+    "petrovaradin",
+    "rakovac",
+    "veternik"
   ].freeze
 
   paginates_per 50
