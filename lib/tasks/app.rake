@@ -1,11 +1,10 @@
 namespace :app do
   desc "Scrape new articles"
   task scrape_articles: :environment do
-    logger = ActiveSupport::Logger.new($stdout)
-    scraper = Site021.new(logger)
+    scraper = Site021.new(Rails.logger)
     articles = scraper.scrape
 
-    factory = ArticleFactory.new(logger)
+    factory = ArticleFactory.new(Rails.logger)
     factory.create(articles) # standard:disable Rails/SaveBang
   end
 
