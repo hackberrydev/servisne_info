@@ -5,9 +5,9 @@ class ArticleFactory
 
   def create(articles)
     filter(articles).each do |article|
-      if Article.exists?(url: article.url)
+      if Article.exists?(url: article.url, town: article.town)
         @logger.warn "Skip article (existing url) - #{article.url}"
-      elsif Article.exists?(external_id: article.external_id)
+      elsif Article.exists?(external_id: article.external_id, town: article.town)
         @logger.warn "Skip article (existing external_id) - #{article.url}"
       else
         @logger.info "Save article - #{article.url}"
