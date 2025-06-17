@@ -33,6 +33,15 @@ RSpec.describe ArticleFactory do
       expect(Article.count).to eq(1)
     end
 
+    it "saves articles with the same URL if the town is different" do
+      article1 = FactoryBot.build(:article, url: "example.com/article1", town: "novi sad")
+      article2 = FactoryBot.build(:article, url: "example.com/article1", town: "ledinci")
+
+      @factory.create([article1, article2])
+
+      expect(Article.count).to eq(2)
+    end
+
     it "doesn't save articles about 'Raspored sahrana'" do
       article = FactoryBot.build(:article, title: "Raspored sahrana za ponedeljak")
 
