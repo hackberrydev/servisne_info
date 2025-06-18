@@ -20,8 +20,10 @@
         <td><%= user.towns.join(", ") %></td>
         <td><%= user.created_at.to_date %></td>
         <td class="text-right">
-          <%= edit_user_link(user) %>
-          <%= delete_user_link(user) %>
+          <div class="btn-group" role="group" aria-label="User actions">
+            <%= edit_user_link(user) %>
+            <%= delete_user_link(user) %>
+          </div>
         </td>
       </tr>
     <% end %>
