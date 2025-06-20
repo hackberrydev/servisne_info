@@ -3,13 +3,16 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   AVAILABLE_TOWNS = [
+    "beočin selo",
     "budisava",
+    "futog",
     "kać",
     "kovilj",
     "ledinci",
     "novi sad",
     "petrovaradin",
     "rakovac",
+    "sremski karlovci",
     "veternik"
   ].freeze
 
