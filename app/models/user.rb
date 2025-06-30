@@ -5,6 +5,7 @@ class User < ApplicationRecord
   AVAILABLE_TOWNS = [
     "beočin selo",
     "budisava",
+    "čortanovci",
     "futog",
     "kać",
     "kovilj",
@@ -12,6 +13,7 @@ class User < ApplicationRecord
     "novi sad",
     "petrovaradin",
     "rakovac",
+    "sremska kamenica",
     "sremski karlovci",
     "veternik"
   ].freeze
