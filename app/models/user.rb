@@ -5,6 +5,7 @@ class User < ApplicationRecord
   AVAILABLE_TOWNS = [
     "beočin selo",
     "budisava",
+    "bukovac",
     "čortanovci",
     "futog",
     "kać",
