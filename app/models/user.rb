@@ -9,6 +9,7 @@ class User < ApplicationRecord
     "čortanovci",
     "futog",
     "kać",
+    "kisač",
     "kovilj",
     "ledinci",
     "novi sad",
