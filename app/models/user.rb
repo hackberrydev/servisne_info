@@ -15,6 +15,7 @@ class User < ApplicationRecord
     "novi sad",
     "petrovaradin",
     "rakovac",
+    "rumenka",
     "sremska kamenica",
     "sremski karlovci",
     "veternik"
