@@ -3,6 +3,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   AVAILABLE_TOWNS = [
+    "begeč",
+    "beočin",
     "beočin selo",
     "budisava",
     "bukovac",
