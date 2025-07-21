@@ -5,20 +5,19 @@ RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_
   let(:articles) { scraper.scrape }
 
   it "scrapes articles from 021.rs" do
-    expect(articles.count).to eq(36)
+    expect(articles.count).to eq(37)
   end
 
   it "scrapes content for articles" do
     article = articles[4]
-    expect(article.title).to eq("Isključenja struje za četvrtak, 24. jun")
-    expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/277402/Iskljucenja-struje-za-cetvrtak-24-jun.html")
-    expect(article.content).to match(/Delovi Novog Sada i Rakovca u četvrtak, 24. juna neće imati struje./)
-    expect(article.content).to match(/Železnička 6-30, 3-9, Vase Stajića 22-22c, firme: Zoil Vojvodina, banke, od 8:30 do 10:30 časova/)
-    expect(article.town).to eq("novi sad")
+    expect(article.title).to eq("Rumenka, Kisač i Stepanovićevo bez vode zbog havarije")
+    expect(article.url).to eq("https://www.021.rs/story/Novi-Sad/Servisne-informacije/277488/Rumenka-Kisac-i-Stepanovicevo-bez-vode-zbog-havarije.html")
+    expect(article.content).to match(/Rumenka, Kisač i Stepanovićevo nemaju vode zbog havarije./)
+    expect(article.town).to eq("rumenka")
   end
 
   it "scrapes articles for towns other than Novi Sad" do
-    article = articles[5]
+    article = articles[6]
     expect(article.town).to match("rakovac")
     expect(article.content).to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
   end
