@@ -21,6 +21,7 @@ class User < ApplicationRecord
     "rumenka",
     "sremska kamenica",
     "sremski karlovci",
+    "stepanovićevo",
     "veternik"
   ].freeze
 
