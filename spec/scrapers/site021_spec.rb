@@ -5,7 +5,7 @@ RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_
   let(:articles) { scraper.scrape }
 
   it "scrapes articles from 021.rs" do
-    expect(articles.count).to eq(37)
+    expect(articles.count).to eq(38)
   end
 
   it "scrapes content for articles" do
@@ -17,7 +17,7 @@ RSpec.describe Site021, vcr: {cassette_name: "Site021/scrapes_articles_from_021_
   end
 
   it "scrapes articles for towns other than Novi Sad" do
-    article = articles[6]
+    article = articles[7]
     expect(article.town).to match("rakovac")
     expect(article.content).to match(/Manastirska, Stošin do, Stari Rakovac, od 9 do 12 časova/)
   end
