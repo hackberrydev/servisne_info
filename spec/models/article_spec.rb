@@ -59,6 +59,15 @@ RSpec.describe Article, type: :model do
 
       expect(article.external_id).to eq("342832")
     end
+
+    it "sets external_id for new URLs" do
+      article = FactoryBot.build(
+        :article,
+        url: "https://www.021.rs/novi-sad/servisne-informacije/420974/blokirana-sutjeska-radar-na-bulevaru-evrope-sta-se-desava-u-saobracaju-u-novom-sadu-i-okolini"
+      )
+
+      expect(article.external_id).to eq("420974")
+    end
   end
 
   describe ".recent" do
