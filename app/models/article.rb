@@ -24,6 +24,7 @@ class Article < ApplicationRecord
   def extract_external_id
     return if url.blank?
 
-    url.split("/")[6]
+    match_data = url.match(/\/(\d+)\//)
+    match_data[1] if match_data
   end
 end
