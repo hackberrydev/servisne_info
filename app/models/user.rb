@@ -9,7 +9,6 @@ class User < ApplicationRecord
     "beočin",
     "budisava",
     "bukovac",
-    "čortanovci",
     "futog",
     "kać",
     "kisač",
@@ -22,7 +21,9 @@ class User < ApplicationRecord
     "sremska kamenica",
     "sremski karlovci",
     "stepanovićevo",
-    "veternik"
+    "susek",
+    "veternik",
+    "čortanovci"
   ].freeze
 
   paginates_per 50
