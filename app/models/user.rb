@@ -5,10 +5,13 @@ class User < ApplicationRecord
   AVAILABLE_TOWNS = [
     "banoštor",
     "begeč",
-    "beočin selo",
     "beočin",
+    "beočin selo",
     "budisava",
     "bukovac",
+    "čenej",
+    "čortanovci",
+    "fruška gora",
     "futog",
     "kać",
     "kisač",
@@ -22,8 +25,7 @@ class User < ApplicationRecord
     "sremski karlovci",
     "stepanovićevo",
     "susek",
-    "veternik",
-    "čortanovci"
+    "veternik"
   ].freeze
 
   paginates_per 50
