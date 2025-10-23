@@ -395,15 +395,15 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    sentry-rails (5.28.1)
-      railties (>= 5.0)
-      sentry-ruby (~> 5.28.1)
-    sentry-ruby (5.28.1)
+    sentry-rails (6.0.0)
+      railties (>= 5.2.0)
+      sentry-ruby (~> 6.0.0)
+    sentry-ruby (6.0.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.28.1)
-      sentry-ruby (~> 5.28.1)
-      sidekiq (>= 3.0)
+    sentry-sidekiq (6.0.0)
+      sentry-ruby (~> 6.0.0)
+      sidekiq (>= 5.0)
     sidekiq (7.3.9)
       base64
       connection_pool (>= 2.3.0)
