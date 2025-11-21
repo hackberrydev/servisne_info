@@ -230,7 +230,7 @@ GEM
     mime-types-data (3.2024.1203)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.1)
+    minitest (5.26.2)
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.5)
       connection_pool (~> 2.2)
@@ -397,14 +397,14 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    sentry-rails (6.1.0)
+    sentry-rails (6.1.1)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.1.0)
-    sentry-ruby (6.1.0)
+      sentry-ruby (~> 6.1.1)
+    sentry-ruby (6.1.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (6.1.0)
-      sentry-ruby (~> 6.1.0)
+    sentry-sidekiq (6.1.1)
+      sentry-ruby (~> 6.1.1)
       sidekiq (>= 5.0)
     sidekiq (7.3.9)
       base64
