@@ -7,6 +7,7 @@ class User < ApplicationRecord
     "begeč",
     "beočin",
     "beočin selo",
+    "brankovac",
     "budisava",
     "bukovac",
     "čenej",
