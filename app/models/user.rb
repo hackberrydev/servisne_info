@@ -20,6 +20,7 @@ class User < ApplicationRecord
     "kisač",
     "kovilj",
     "ledinci",
+    "novi ledinci",
     "novi sad",
     "petrovaradin",
     "rakovac",
