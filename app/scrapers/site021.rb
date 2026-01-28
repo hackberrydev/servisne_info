@@ -63,7 +63,7 @@ class Site021
   end
 
   def towns_in_title(title)
-    towns = User::AVAILABLE_TOWNS.select { title.downcase.include?(it) }
+    towns = User::AVAILABLE_TOWNS.select { title.strip.downcase.include?(it) }
 
     towns.empty? ? ["novi sad"] : towns
   end
