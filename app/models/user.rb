@@ -28,6 +28,7 @@ class User < ApplicationRecord
     "rumenka",
     "sremska kamenica",
     "sremski karlovci",
+    "stari ledinci",
     "stepanovićevo",
     "susek",
     "veternik"
