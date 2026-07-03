@@ -140,7 +140,7 @@ GEM
     crack (1.0.1)
       bigdecimal
       rexml
-    crass (1.0.6)
+    crass (1.0.7)
     date (3.5.1)
     devise (5.0.4)
       bcrypt (~> 3.0)
@@ -239,7 +239,7 @@ GEM
     net-http-digest_auth (1.4.1)
     net-http-persistent (4.0.5)
       connection_pool (~> 2.2)
-    net-imap (0.6.4)
+    net-imap (0.6.4.1)
       date
       net-protocol
     net-pop (0.1.2)
