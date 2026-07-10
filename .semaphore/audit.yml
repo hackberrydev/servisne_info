@@ -1,0 +1,16 @@
+version: v1.0
+name: Test
+agent:
+  machine:
+    type: e2-standard-2
+    os_image: ubuntu2204
+blocks:
+  - name: Audit
+    task:
+      jobs:
+        - name: Test and Audit
+          commands:
+            - checkout
+            - cp .ruby-version.sem .ruby-version
+            - bundle install --deployment --path .bundle
+            - bin/bundle_audit
