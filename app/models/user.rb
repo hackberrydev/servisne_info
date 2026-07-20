@@ -34,6 +34,7 @@ class User < ApplicationRecord
     "stari ledinci",
     "stepanovićevo",
     "susek",
+    "temerin",
     "veternik"
   ].freeze
 
