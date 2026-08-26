@@ -43,9 +43,11 @@ Install dependencies (git, ruby, nginx, etc.):
 
 ```bash
 sudo apt install -y cron ruby ruby-dev build-essential git nginx postgresql \
-  postgresql-contrib libpq-dev nodejs htop redis-server libmagickwand-dev \
-  libyaml-dev
+  postgresql-contrib libpq-dev nodejs htop libyaml-dev
 ```
+
+`nodejs` is required: asset precompilation runs Terser through ExecJS, which
+needs a JavaScript runtime on the server.
 
 Install [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.com/rbenv/ruby-build).
 
@@ -55,10 +57,10 @@ Install [rbenv](https://github.com/rbenv/rbenv) and [ruby-build](https://github.
 echo 'eval "$(~/.rbenv/bin/rbenv init - bash)"' >> ~/.profile
 ```
 
-Install the required version of Ruby:
+Install the required version of Ruby. This must match `.ruby-version`:
 
 ```
-rbenv install 3.2.2
+rbenv install 3.4.5
 ```
 
 Install bundler:
