@@ -16,7 +16,6 @@ gem "puma", "~> 8.0"
 gem "sassc-rails"
 gem "sentry-ruby"
 gem "sentry-rails"
-gem "sentry-sidekiq"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "whenever", require: false

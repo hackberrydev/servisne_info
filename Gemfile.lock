@@ -331,8 +331,6 @@ GEM
       prism (>= 1.6.0)
       rbs (>= 4.0.0)
       tsort
-    redis-client (0.30.1)
-      connection_pool
     regexp_parser (2.12.0)
     reline (0.7.0)
       io-console (~> 0.5)
@@ -402,15 +400,6 @@ GEM
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
-    sentry-sidekiq (6.7.0)
-      sentry-ruby (~> 6.7.0)
-      sidekiq (>= 5.0)
-    sidekiq (7.3.10)
-      base64
-      connection_pool (>= 2.3.0, < 3)
-      logger
-      rack (>= 2.2.4, < 3.3)
-      redis-client (>= 0.23.0, < 1)
     sprockets (4.4.1)
       concurrent-ruby (~> 1.1)
       logger
@@ -503,7 +492,6 @@ DEPENDENCIES
   sassc-rails
   sentry-rails
   sentry-ruby
-  sentry-sidekiq
   standard
   standard-rails
   turbolinks (~> 5)
