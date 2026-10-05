@@ -268,7 +268,7 @@ GEM
     parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.3)
+    pg (1.7.0)
     pg_search (2.4.0)
       activerecord (>= 8.0)
       activesupport (>= 8.0)
