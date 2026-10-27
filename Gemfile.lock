@@ -152,7 +152,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.6.2)
-    domain_name (0.6.20240107)
+    domain_name (0.7.20261007)
     drb (2.2.3)
     erb (6.0.7)
     erubi (1.13.1)
@@ -219,7 +219,7 @@ GEM
       net-smtp
     marcel (1.2.1)
     matrix (0.4.2)
-    mechanize (2.14.1)
+    mechanize (2.14.2)
       addressable (~> 2.8)
       base64
       domain_name (~> 0.5, >= 0.5.20190701)
@@ -235,7 +235,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0701)
+    mime-types-data (3.2026.1020)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (6.0.6)
@@ -385,7 +385,7 @@ GEM
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
     ruby-progressbar (1.13.0)
-    rubyntlm (0.6.5)
+    rubyntlm (0.6.8)
       base64
     sassc (2.4.0)
       ffi (~> 1.9)
