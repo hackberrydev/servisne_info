@@ -18,7 +18,7 @@ blocks:
             - checkout
             - cp .ruby-version.sem .ruby-version
             - cp config/database.yml.semaphore2 config/database.yml
-            - bundle install --deployment
+            - bundle install
             - 'bin/rails db:create db:schema:load'
             - bin/rails spec
             - bin/brakeman
