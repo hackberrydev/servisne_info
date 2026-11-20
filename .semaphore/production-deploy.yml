@@ -16,5 +16,5 @@ blocks:
             - chmod 0600 ~/.ssh/id_rsa_semaphoreci
             - ssh-add ~/.ssh/id_rsa_semaphoreci
             - gem install bundler -v 2.0.2
-            - bundle install --path .bundle
+            - bundle install --deployment
             - bin/cap production deploy

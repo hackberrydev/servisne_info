@@ -12,5 +12,5 @@ blocks:
           commands:
             - checkout
             - cp .ruby-version.sem .ruby-version
-            - bundle install --deployment --path .bundle
+            - bundle install --deployment
             - bin/bundle_audit
